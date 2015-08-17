@@ -1,0 +1,22 @@
+.phone {
+    position: absolute;
+    background: url(../images/phone-case.png) no-repeat center top;
+    width: 377px;
+    height: 796px;
+    -webkit-background-size: 100% auto;
+    background-size: 100% auto;
+    top: -40px;
+    right: 40px;
+}
+
+.phone iframe {
+    width: 320px;
+    height: 548px;
+    position: absolute;
+    left: 50%;
+    margin-left: -160px;
+    top: 50%;
+    margin-top: -260px;
+    background-color: white;
+
+}
