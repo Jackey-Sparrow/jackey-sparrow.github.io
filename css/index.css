@@ -1,0 +1,20 @@
+.header {
+    width: 60%;
+    height: 200px;
+    line-height: 200px;
+    margin: 50px auto;
+    text-align: center;
+    border-bottom: 1px solid #eee;
+}
+
+@media screen and (min-width: 768px) {
+    .header {
+        font-size: 50px;
+    }
+}
+
+@media screen and (max-width: 768px) {
+    .header {
+        font-size: 30px;
+    }
+}
