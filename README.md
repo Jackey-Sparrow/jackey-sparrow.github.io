@@ -3,6 +3,6 @@
 ionic project 
 
 # todo
- use gulp to build project from hiApp-ionic
+ use gulp to build project from hiApp-ionic, fail 
 
 　
