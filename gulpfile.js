@@ -30,9 +30,7 @@ var jsPaths = [
     'www/js/contacts/services/*.js',
     'www/js/contacts/controllers/*.js',
 
-
     'www/js/setting/controllers/*.js'
-
 
 ];
 

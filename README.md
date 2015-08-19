@@ -3,7 +3,7 @@
 ionic project 
 
 # todo
- use gulp to build project from hiApp-ionic, fail!!
- may skill the app.js 
+ use gulp to build project from hiApp-ionic
+ skill the app.js and it success
 
 　
