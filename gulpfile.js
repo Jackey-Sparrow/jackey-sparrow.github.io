@@ -12,10 +12,10 @@ var gulp = require('gulp'),
 
 
 var jsPaths = [
-    'www/js/global.js',
-    'www/js/app.js',
 
-
+    //'www/js/angular/angular-translate.js',
+    //'www/js/global.js',
+    //'www/js/app.js',
 
     'www/js/platform/*.js',
 
@@ -30,7 +30,7 @@ var jsPaths = [
     'www/js/contacts/services/*.js',
     'www/js/contacts/controllers/*.js',
 
-    'www/js/setting/services/*.js',
+
     'www/js/setting/controllers/*.js'
 
 

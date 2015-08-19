@@ -109,13 +109,21 @@
                  */
                 $scope.modalFn = {
                     openModal: function () {
+                        tweetService.setScrollPosition($ionicScrollDelegate.getScrollPosition());
                         platformModal.openModal({
                             templateUrl: 'js/tweet/templates/add-tweet.html',
                             scope: $scope
                         });
                     },
-                    hideModal: platformModal.hideModal
+                    hideModal: function () {
+                        platformModal.hideModal();
+                        var scrollPosition = tweetService.getScrollPosition();
+                        $timeout(function () {
+                            $ionicScrollDelegate.scrollTo(scrollPosition.left, scrollPosition.top, true);
+                        });
+                    }
                 };
+
 
                 /*
                  * destroy
