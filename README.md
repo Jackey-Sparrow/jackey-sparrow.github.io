@@ -3,7 +3,8 @@
 ionic project 
 
 # todo
- use gulp to build project from hiApp-ionic
- skill the app.js and it success
+ the file in lib should compress code first
+ take case of the app.js
+ 
 
 　
