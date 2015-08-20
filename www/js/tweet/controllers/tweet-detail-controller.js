@@ -10,8 +10,24 @@
     angular.module(globalSettings.appName).controller('tweetDetailController',
         ['$scope', '$stateParams', 'tweetService', '$ionicHistory', '$state',
             'tweetCommentService', '$ionicActionSheet', '$timeout',
+            'basicControllerService', 'platformModal', 'tweetDetailService',
+            '$ionicScrollDelegate', '$translate',
             function ($scope, $stateParams, tweetService, $ionicHistory, $state,
-                      tweetCommentService, $ionicActionSheet, $timeout) {
+                      tweetCommentService, $ionicActionSheet, $timeout,
+                      basicControllerService, platformModal, tweetDetailService,
+                      $ionicScrollDelegate, $translate) {
+
+                //extend basic class
+                basicControllerService.initController($scope);
+
+                //translate
+                $scope.tweetDetailTranslate = {
+                    title: $translate.instant('tweet.tweetDetail'),
+                    comment: $translate.instant('tweet.comment'),
+                    forward: $translate.instant('tweet.forward'),
+                    addComment: $translate.instant('tweet.addComment'),
+                    noComment: $translate.instant('tweet.noComment')
+                };
 
                 //tweet Id
                 var tweetId = $stateParams.tweetId;
@@ -43,24 +59,49 @@
                 /*
                  * add comment
                  */
-                $scope.addComment = function () {
-                    //todo
+                //$scope.addComment = function () {
+                //todo
+                //};
+
+                /*
+                 * add tweet modal
+                 */
+                $scope.modalFn = {
+                    openModal: function () {
+                        //store the scroll position
+                        tweetDetailService.setScrollPosition($ionicScrollDelegate.getScrollPosition());
+                        platformModal.openModal({
+                            templateUrl: 'js/tweet/templates/add-comment.html',
+                            scope: $scope
+                        });
+                    },
+                    hideModal: function () {
+                        platformModal.hideModal();
+                        var scrollPosition = tweetDetailService.getScrollPosition();
+                        //set the scroll position back
+                        $timeout(function () {
+                            $ionicScrollDelegate.scrollTo(scrollPosition.left, scrollPosition.top, true);
+                        });
+                    }
                 };
 
                 /*
                  * reply comment
                  */
+                var reply = $translate.instant('tweet.reply'),
+                    copy = $translate.instant('tweet.copy'),
+                    cancel = $translate.instant('tweet.cancel');
                 $scope.replyComment = function () {
 
                     // Show the action sheet
                     var hideSheet = $ionicActionSheet.show({
                         buttons: [
-                            {text: 'Reply'},
-                            {text: 'Copy'}
+                            {text: reply},
+                            {text: copy}
                         ],
                         //destructiveText: 'Delete',
                         //titleText: 'Modify your album',
-                        cancelText: 'Cancel',
+                        cancelText: cancel,
                         cancel: function () {
                             // add cancel code..
                         },

@@ -1,17 +1,16 @@
 /**
- * Created by Jackey Li on 2015/8/8.
+ * Created by Jackey Li on 2015/8/20.
  */
 (function (angular) {
     'use strict';
     /*
-     * add tweet controller
+     * add comment controller
      */
-    angular.module(globalSettings.appName).controller('addTweetController',
+    angular.module(globalSettings.appName).controller('addCommentController',
         ['$scope', '$translate',
             function ($scope, $translate) {
-
-                $scope.title = $translate.instant('tweet.addTweet');
-                $scope.somethingNew = $translate.instant('tweet.somethingNew');
+                $scope.title = $translate.instant('tweet.addComment');
+                $scope.commentText = $translate.instant('tweet.commentText');
 
                 /*
                  * back
