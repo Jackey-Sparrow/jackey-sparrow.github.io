@@ -10,25 +10,7 @@
     angular.module(globalSettings.appName).factory('tweetService',
         ['$q', '$http', function ($q, $http) {
             var service = {},
-                list = [],
-                scrollPosition = {
-                    left: 0,
-                    top: 0
-                };
-
-            /*
-             * store scroll position
-             */
-            service.setScrollPosition = function (position) {
-                scrollPosition = position;
-            };
-
-            /*
-             * get scroll position
-             */
-            service.getScrollPosition = function () {
-                return scrollPosition;
-            };
+                list = [];
 
             /*
              * set tweet list
@@ -67,7 +49,12 @@
                     end = (pageNumber + 1) * pageSize,
                     defer = $q.defer();
                 $http.get('js/tweet/tweet.json').then(function (response) {
-                    defer.resolve(response.data.slice(start, end));
+                    var len = response.data.length,
+                        result = {
+                            totalCount:len,
+                            main:response.data.slice(start, end)
+                        };
+                    defer.resolve(result);
                 }, function (error) {
                     console.log(error);
                 });

@@ -43,6 +43,8 @@
 
                 //tweet list
                 $scope.list = [];
+                $scope.currentCount = $scope.list.length;
+                $scope.totalCount = 0;
 
                 /*
                  * get data
@@ -54,10 +56,13 @@
                     }
                     $timeout(function () {
 
-                        tweetService.getTweetByPagination($scope.options).then(function (data) {
+                        tweetService.getTweetByPagination($scope.options).then(function (result) {
+                            var data = result.main;
                             if (data.length) {
                                 $scope.options.pageNumber++;
                                 $scope.list = $scope.list.concat(data);
+                                $scope.currentCount = $scope.list.length;
+                                $scope.totalCount = result.totalCount;
                                 //store tweet list
                                 tweetService.setList($scope.list);
                                 if ($scope.options.type === loadDataType.loadMore) {
@@ -109,8 +114,7 @@
                  */
                 $scope.modalFn = {
                     openModal: function () {
-                        //store the scroll position
-                        tweetService.setScrollPosition($ionicScrollDelegate.getScrollPosition());
+
                         platformModal.openModal({
                             templateUrl: 'js/tweet/templates/add-tweet.html',
                             scope: $scope
@@ -118,11 +122,7 @@
                     },
                     hideModal: function () {
                         platformModal.hideModal();
-                        var scrollPosition = tweetService.getScrollPosition();
-                        //set the scroll position back
-                        $timeout(function () {
-                            $ionicScrollDelegate.scrollTo(scrollPosition.left, scrollPosition.top, true);
-                        });
+
                     }
                 };
 
