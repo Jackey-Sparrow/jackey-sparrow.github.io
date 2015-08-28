@@ -1,14 +1,34 @@
-<ion-header-bar class="bar-header bar-light" >
+<ion-header-bar class="bar-header bar-light" style="border-bottom: 1px solid gray;">
     <i class="button i-button icon ion-ios-arrow-thin-left" on-tap="back()"></i>
+
     <h1 class="title">{{contact.name}}</h1>
 </ion-header-bar>
 
 <ion-view view-title="{{contact.name}}">
-    <ion-content class="padding bg-gray">
-        <img ng-src="{{contact.face}}" style="width: 64px; height: 64px">
+    <ion-content class="" style="padding-left: 20px;">
+        <div class="list">
 
-        <p>
-            {{contact.telephone}}
-        </p>
+            <a class="item item-thumbnail-left" href="" style="border: none; text-underline: none;">
+                <img src="{{contact.face}}" style="border-radius: 50px;"/>
+
+                <h2 style="margin-top: 20px;">{{::contact.name}}</h2>
+
+            </a>
+        </div>
+        <div class="item-detail">
+            <div class="item-content" style="text-decoration: none;">{{contact.telephone}}</div>
+            <i class="ion-ios-telephone-outline text-orange"></i>
+            <i class="ion-ios-chatbubble-outline text-orange"></i>
+        </div>
+
+        <div class="item-detail">
+            <div class="item-content">{{contact.email}}</div>
+            <i class="ion-ios-email-outline text-orange"></i>
+        </div>
+
+        <div class="item-detail">
+            <div class="item-content">{{contact.location}}</div>
+            <i ion-baidu-map class="ion-ios-location-outline text-orange" lat="{{contact.address.latitude}}" lng="{{contact.address.longitude}}"></i>
+        </div>
     </ion-content>
 </ion-view>
