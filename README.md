@@ -16,5 +16,7 @@ ionic project
 
  - gulp project
 
+ - protractor bootstrap and so on
+
 
 　
