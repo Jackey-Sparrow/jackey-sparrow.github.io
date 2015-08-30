@@ -10,6 +10,7 @@ ionic project
  
  - include ng2 project
  - angular-watcher-count introduction
- 
+   coming soon, will has each module
+
 
 　
