@@ -8,7 +8,9 @@ var gulp = require('gulp'),
     rimraf = require('gulp-rimraf'),
     rename = require('gulp-rename'),
     concat = require('gulp-concat'),
-    uglify = require('gulp-uglify');
+    uglify = require('gulp-uglify'),
+    inject = require('gulp-inject'),
+    watch = require('gulp-watch');
 
 
 var jsPaths = [
@@ -47,5 +49,41 @@ gulp.task('clean', function () {
         .pipe(rimraf({force: true}));
 });
 
+var basePath = './www';
 
-gulp.task('default', ['clean','buildJs']);
+gulp.task('index', function () {
+    //basePath + '/**/*.js' : all files in basePath
+    //basePath + '/*/*.js' : the first level in basePath
+    //basePath + '/*/*/*.js' : the second level in basePath
+    //'!' + basePath + '/lib/*/*.js' : ignore the files
+
+    watch(basePath + '/**/*.js', {base: basePath}, function () {
+        return gulp.src('./build/index.html')
+
+            .pipe(inject(gulp.src([basePath + '/app/**/*.css'], {read: false}), {
+                name: 'css',
+                addRootSlash: false
+            }), {relative: true})
+
+            .pipe(inject(gulp.src([basePath + '/*/*.js'], {read: false}), {
+                name: 'module',
+                addRootSlash: false
+            }), {relative: true})
+
+            .pipe(inject(gulp.src([basePath + '/platform/*/*.js'], {read: false}), {
+                name: 'platform',
+                addRootSlash: false
+            }), {relative: true})
+
+
+            .pipe(inject(gulp.src([basePath + '/*/*/*.js', '!' + basePath + '/lib/*/*.js', '!' + basePath + '/platform/*/*.js'], {read: false}), {
+                name: 'submodule',
+                addRootSlash: false
+            }), {relative: true})
+            .pipe(gulp.dest('./build'));
+    });
+
+});
+
+
+gulp.task('default', ['clean', 'buildJs']);
