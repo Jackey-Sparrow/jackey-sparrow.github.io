@@ -6,16 +6,18 @@
         <i class="i-button icon ion-android-done i-header-right" on-tap="openModal()"></i>
     </ion-header-bar>
     <ion-content class="bg-gray">
+
         <textarea rows="8" style="width:100%;margin-top: 1px;padding: 5px;" placeholder="{{::somethingNew}}"></textarea>
         <div class="message-tool">
             <ul>
-                <li class="ion-camera"></li>
+                <li class="ion-camera" on-tap="takeCamera()"></li>
                 <li class="ion-image"></li>
                 <li class="ion-happy-outline"></li>
                 <li class="ion-at"></li>
                 <li class="ion-location"></li>
             </ul>
         </div>
+        <img id="myImage" style="width: 100px;height: 100px;"/>
     </ion-content>
 
 </ion-modal-view>
