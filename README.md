@@ -12,7 +12,7 @@ ionic project
  - angular-watcher-count introduction
    coming soon, will has each module.
 
- - nodejs Project
+ - nodejs Project(not figura out how to )
 
  - gulp project
 
