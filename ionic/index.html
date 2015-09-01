@@ -6,9 +6,10 @@
     <title>hiApp-ionic</title>
 
     <link href="lib/10_ionic/css/ionic.css" rel="stylesheet">
-    <link href="app/content/css/style.css" rel="stylesheet">
-    <link href="app/content/css/animate.min.css" rel="stylesheet">
-    <link href="app/content/css/animate-leave.css" rel="stylesheet">
+    <!--<link href="app/content/css/style.css" rel="stylesheet">-->
+    <!--<link href="app/content/css/animate.min.css" rel="stylesheet">-->
+    <!--<link href="app/content/css/animate-leave.css" rel="stylesheet">-->
+    <link href="build/css/main.min.css" rel="stylesheet">
 
     <!-- IF using Sass (run gulp sass first), then uncomment below and remove the CSS includes above
     <link href="css/ionic.app.css" rel="stylesheet">
@@ -29,22 +30,6 @@
     <!--translate-->
     <script src="lib/20_angular-translate/angular-translate.js"></script>
 
-    <!--platform file-->
-    <script src="platform/platform.js"></script>
-    <script src="platform/directives/ion-small-item.js"></script>
-    <script src="platform/directives/ion-picture-browser.js"></script>
-    <script src="platform/directives/ion-google-map.js"></script>
-    <script src="platform/directives/ion-baidu-map.js"></script>
-    <script src="platform/directives/ion-pagination.js"></script>
-    <script src="platform/services/ion-alert.js"></script>
-    <!--localStorage-->
-    <script src="platform/services/local-storage-service.js"></script>
-    <!--modal service-->
-    <script src="platform/services/platform-modal.js"></script>
-    <script src="platform/services/platform-helper.js"></script>
-    <!--basic controller-->
-    <script src="platform/services/basic-controller-service.js"></script>
-
     <!-- cordova script (this will be a 404 during development) -->
     <script src="lib/30_ngCordova/dist/ng-cordova.js"></script>
     <script src="cordova.js"></script>
@@ -53,38 +38,11 @@
     <script src="app.js"></script>
     <script src="app/translate-config.js"></script>
 
+    <!--module-->
+    <script src="build/js/module.min.js"></script>
 
-    <!--language-->
-    <script src="language/language.js"></script>
-    <script src="language/services/language-service.js"></script>
-    <script src="language/controllers/change-language-controller.js"></script>
-
-
-    <!--login file-->
-    <script src="login/login.js"></script>
-    <script src="login/controllers/login-controller.js"></script>
-
-    <!--tweet file-->
-    <script src="tweet/tweet.js"></script>
-    <script src="tweet/services/tweet-service.js"></script>
-    <script src="tweet/services/tweet-detail-service.js"></script>
-    <script src="tweet/services/tweet-comment-service.js"></script>
-    <script src="tweet/controllers/tweet-controller.js"></script>
-    <script src="tweet/controllers/add-tweet-controller.js"></script>
-    <script src="tweet/controllers/tweet-detail-controller.js"></script>
-    <script src="tweet/controllers/add-comment-controller.js"></script>
-
-    <!--contact-->
-    <script src="contacts/contacts.js"></script>
-    <script src="contacts/services/contact-http-service.js"></script>
-    <script src="contacts/services/contact-service.js"></script>
-    <script src="contacts/controllers/contacts-controller.js"></script>
-    <script src="contacts/controllers/contact-detail-controller.js"></script>
-
-    <!--setting file-->
-    <script src="setting/setting.js"></script>
-    <script src="setting/controllers/setting-controller.js"></script>
-
+    <!--submodule-->
+    <script src="build/js/submodule.min.js"></script>
 
 </head>
 <body ng-app="hiApp">

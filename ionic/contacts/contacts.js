@@ -17,8 +17,7 @@
                     controller: 'contactsController'
                 }
             }
-        })
-            .state('tab.contact-detail', {
+        }).state('tab.contact-detail', {
                 url: '/contacts/:contactId',
                 views: {
                     'tab-contacts': {

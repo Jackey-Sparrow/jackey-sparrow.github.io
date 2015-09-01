@@ -12,11 +12,12 @@ var gulp = require('gulp'),
     inject = require('gulp-inject'),
     watch = require('gulp-watch'),
     inject = require('gulp-inject'),
-    minifyCss = require('gulp-minify-css');
+    minifyCss = require('gulp-minify-css'),
+    ngMin = require('gulp-ngmin');
 
 
 var cssPath = [
-    'ionic/lib/10_ionic/css/ionic.css',
+    //'ionic/lib/10_ionic/css/ionic.css',
     'ionic/app/content/css/style.css',
     'ionic/app/content/css/animate.min.css',
     'ionic/app/content/css/animate-leave.css'
@@ -42,16 +43,17 @@ gulp.task('libJs', function () {
 });
 
 var modulePath = [
+    'ionic/platform/*.js',
     'ionic/contacts/*.js',
     'ionic/language/*.js',
     'ionic/login/*.js',
-    'ionic/platform/*.js',
     'ionic/setting/*.js',
     'ionic/tweet/*.js'
 ];
 
 gulp.task('moduleJs', function () {
     return gulp.src(modulePath)
+        .pipe(ngMin({dynamic: true}))
         .pipe(uglify())
         .pipe(concat('module.min.js'))
         .pipe(gulp.dest('ionic/build/js'));
@@ -68,6 +70,7 @@ var subModulePath = [
 
 gulp.task('submoduleJs', function () {
     return gulp.src(subModulePath)
+        .pipe(ngMin({dynamic: true}))
         .pipe(uglify())
         .pipe(concat('submodule.min.js'))
         .pipe(gulp.dest('ionic/build/js'));
@@ -75,7 +78,7 @@ gulp.task('submoduleJs', function () {
 
 
 gulp.task('clean', function () {
-    return gulp.src(['www/build/*.js'], {read: false})
+    return gulp.src(['ionic/build/js/*.js'], {read: false})
         .pipe(rimraf({force: true}));
 });
 
@@ -116,4 +119,4 @@ gulp.task('index', function () {
 });
 
 
-gulp.task('default', ['clean', 'minCss', 'libJs', 'moduleJs', 'submoduleJs']);
+gulp.task('default', ['clean', 'minCss', 'moduleJs', 'submoduleJs']);

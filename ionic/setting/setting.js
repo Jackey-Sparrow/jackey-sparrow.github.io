@@ -17,9 +17,7 @@
                         controller: 'settingController'
                     }
                 }
-            })
-
-            .state('tab.changeLanguage', {
+            }).state('tab.changeLanguage', {
                 url: '/setting/:changeLanguage',
                 views: {
                     'tab-setting': {
