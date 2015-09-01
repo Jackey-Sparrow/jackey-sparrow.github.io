@@ -10,37 +10,67 @@ var gulp = require('gulp'),
     concat = require('gulp-concat'),
     uglify = require('gulp-uglify'),
     inject = require('gulp-inject'),
-    watch = require('gulp-watch');
+    watch = require('gulp-watch'),
+    inject = require('gulp-inject'),
+    minifyCss = require('gulp-minify-css');
 
 
-var jsPaths = [
-
-    //'www/js/angular/angular-translate.js',
-    //'www/js/global.js',
-    //'www/js/app.js',
-
-    'www/js/platform/*.js',
-
-    'www/js/language/services/*.js',
-    'www/js/language/controllers/*.js',
-
-    'www/js/login/*.js',
-
-    'www/js/tweet/services/*.js',
-    'www/js/tweet/controllers/*.js',
-
-    'www/js/contacts/services/*.js',
-    'www/js/contacts/controllers/*.js',
-
-    'www/js/setting/controllers/*.js'
-
+var cssPath = [
+    'ionic/lib/10_ionic/css/ionic.css',
+    'ionic/app/content/css/style.css',
+    'ionic/app/content/css/animate.min.css',
+    'ionic/app/content/css/animate-leave.css'
 ];
 
-gulp.task('buildJs', function () {
-    return gulp.src(jsPaths)
+gulp.task('minCss', function () {
+    return gulp.src(cssPath)
+        .pipe(minifyCss())
+        .pipe(concat('main.min.css'))
+        .pipe(gulp.dest('ionic/build/css'));
+});
+
+var libPath = [
+    'ionic/lib/10_ionic/js/ionic.bundle.js',
+    'ionic/lib/20_angular-translate/angular-translate.js'
+];
+
+gulp.task('libJs', function () {
+    return gulp.src(libPath)
         .pipe(uglify())
-        .pipe(concat('main.min.js'))
-        .pipe(gulp.dest('www/build'));
+        .pipe(concat('lib.min.js'))
+        .pipe(gulp.dest('ionic/build/js'));
+});
+
+var modulePath = [
+    'ionic/contacts/*.js',
+    'ionic/language/*.js',
+    'ionic/login/*.js',
+    'ionic/platform/*.js',
+    'ionic/setting/*.js',
+    'ionic/tweet/*.js'
+];
+
+gulp.task('moduleJs', function () {
+    return gulp.src(modulePath)
+        .pipe(uglify())
+        .pipe(concat('module.min.js'))
+        .pipe(gulp.dest('ionic/build/js'));
+});
+
+var subModulePath = [
+    'ionic/contacts/*/*.js',
+    'ionic/language/*/*.js',
+    'ionic/login/*/*.js',
+    'ionic/platform/*/*.js',
+    'ionic/setting/*/*.js',
+    'ionic/tweet/*/*.js'
+];
+
+gulp.task('submoduleJs', function () {
+    return gulp.src(subModulePath)
+        .pipe(uglify())
+        .pipe(concat('submodule.min.js'))
+        .pipe(gulp.dest('ionic/build/js'));
 });
 
 
@@ -49,7 +79,7 @@ gulp.task('clean', function () {
         .pipe(rimraf({force: true}));
 });
 
-var basePath = './www';
+var basePath = './ionic';
 
 gulp.task('index', function () {
     //basePath + '/**/*.js' : all files in basePath
@@ -86,4 +116,4 @@ gulp.task('index', function () {
 });
 
 
-gulp.task('default', ['clean', 'buildJs']);
+gulp.task('default', ['clean', 'minCss', 'libJs', 'moduleJs', 'submoduleJs']);
