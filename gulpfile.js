@@ -31,12 +31,17 @@ gulp.task('minCss', function () {
 });
 
 var libPath = [
-    'ionic/lib/10_ionic/js/ionic.bundle.js',
-    'ionic/lib/20_angular-translate/angular-translate.js'
+    //'ionic/lib/10_ionic/js/ionic.bundle.min.js',
+    'ionic/app/global.js',
+    'ionic/lib/20_angular-translate/angular-translate.js',
+    'ionic/lib/30_ngCordova/dist/ng-cordova.js',
+    'ionic/app.js',
+    'ionic/app/translate-config.js'
 ];
 
 gulp.task('libJs', function () {
     return gulp.src(libPath)
+        .pipe(ngMin({dynamic: true}))
         .pipe(uglify())
         .pipe(concat('lib.min.js'))
         .pipe(gulp.dest('ionic/build/js'));
@@ -118,5 +123,20 @@ gulp.task('index', function () {
 
 });
 
+var allPaths = [
+    'ionic/build/js/lib.min.js',
+    'ionic/build/js/module.min.js',
+    'ionic/build/js/submodule.min.js'
+];
 
-gulp.task('default', ['clean', 'minCss', 'moduleJs', 'submoduleJs']);
+gulp.task('all.min', function () {
+   return gulp.src(allPaths)
+       .pipe(ngMin({dynamic:true}))
+       .pipe(uglify())
+       .pipe(concat('all.min.js'))
+       .pipe(gulp.dest('ionic/build/js'));
+});
+
+
+gulp.task('default', ['clean', 'minCss', 'libJs','moduleJs', 'submoduleJs']);
+gulp.task('all-min',['all.min']);
