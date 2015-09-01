@@ -14,7 +14,7 @@
 
                 service.getAllContacts = function () {
                     var defer = $q.defer();
-                    $http.get('contacts/contacts.json').then(function (response) {
+                    $http.get('data/contacts.json').then(function (response) {
                         defer.resolve(response.data);
                     }, function (error) {
                         defer.reject(error);

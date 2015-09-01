@@ -15,7 +15,7 @@
 
                 service.getCommentByTweetId = function (tweetId) {
                     var defer = $q.defer();
-                    $http.get('tweet/comments.json').then(function (response) {
+                    $http.get('data/comments.json').then(function (response) {
                         list = response.data;
                         var result = list.filter(function (item) {
                             return item.tweetId === tweetId;
