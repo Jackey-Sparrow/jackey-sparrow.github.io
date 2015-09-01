@@ -15,28 +15,27 @@ var gulp = require('gulp'),
     minifyCss = require('gulp-minify-css'),
     ngMin = require('gulp-ngmin');
 
+var rootPath = 'ionic/';
 
 var cssPath = [
-    //'ionic/lib/10_ionic/css/ionic.css',
-    'ionic/app/content/css/style.css',
-    'ionic/app/content/css/animate.min.css',
-    'ionic/app/content/css/animate-leave.css'
+    rootPath + 'app/content/css/style.css',
+    rootPath + 'app/content/css/animate.min.css',
+    rootPath + 'app/content/css/animate-leave.css'
 ];
 
 gulp.task('minCss', function () {
     return gulp.src(cssPath)
         .pipe(minifyCss())
         .pipe(concat('main.min.css'))
-        .pipe(gulp.dest('ionic/build/css'));
+        .pipe(gulp.dest(rootPath + 'build/css'));
 });
 
 var libPath = [
-    //'ionic/lib/10_ionic/js/ionic.bundle.min.js',
-    'ionic/app/global.js',
-    'ionic/lib/20_angular-translate/angular-translate.js',
-    'ionic/lib/30_ngCordova/dist/ng-cordova.js',
-    'ionic/app.js',
-    'ionic/app/translate-config.js'
+    rootPath + 'app/global.js',
+    rootPath + 'lib/20_angular-translate/angular-translate.js',
+    rootPath + 'lib/30_ngCordova/dist/ng-cordova.js',
+    rootPath + 'app.js',
+    rootPath + 'app/translate-config.js'
 ];
 
 gulp.task('libJs', function () {
@@ -44,16 +43,16 @@ gulp.task('libJs', function () {
         .pipe(ngMin({dynamic: true}))
         .pipe(uglify())
         .pipe(concat('lib.min.js'))
-        .pipe(gulp.dest('ionic/build/js'));
+        .pipe(gulp.dest(rootPath + 'build/js'));
 });
 
 var modulePath = [
-    'ionic/platform/*.js',
-    'ionic/contacts/*.js',
-    'ionic/language/*.js',
-    'ionic/login/*.js',
-    'ionic/setting/*.js',
-    'ionic/tweet/*.js'
+    rootPath + 'platform/*.js',
+    rootPath + 'contacts/*.js',
+    rootPath + 'language/*.js',
+    rootPath + 'login/*.js',
+    rootPath + 'setting/*.js',
+    rootPath + 'tweet/*.js'
 ];
 
 gulp.task('moduleJs', function () {
@@ -61,16 +60,16 @@ gulp.task('moduleJs', function () {
         .pipe(ngMin({dynamic: true}))
         .pipe(uglify())
         .pipe(concat('module.min.js'))
-        .pipe(gulp.dest('ionic/build/js'));
+        .pipe(gulp.dest(rootPath + 'build/js'));
 });
 
 var subModulePath = [
-    'ionic/contacts/*/*.js',
-    'ionic/language/*/*.js',
-    'ionic/login/*/*.js',
-    'ionic/platform/*/*.js',
-    'ionic/setting/*/*.js',
-    'ionic/tweet/*/*.js'
+    rootPath + 'contacts/*/*.js',
+    rootPath + 'language/*/*.js',
+    rootPath + 'login/*/*.js',
+    rootPath + 'platform/*/*.js',
+    rootPath + 'setting/*/*.js',
+    rootPath + 'tweet/*/*.js'
 ];
 
 gulp.task('submoduleJs', function () {
@@ -78,12 +77,12 @@ gulp.task('submoduleJs', function () {
         .pipe(ngMin({dynamic: true}))
         .pipe(uglify())
         .pipe(concat('submodule.min.js'))
-        .pipe(gulp.dest('ionic/build/js'));
+        .pipe(gulp.dest(rootPath + 'build/js'));
 });
 
 
 gulp.task('clean', function () {
-    return gulp.src(['ionic/build/js/*.js'], {read: false})
+    return gulp.src([rootPath + 'build/js/*.js'], {read: false})
         .pipe(rimraf({force: true}));
 });
 
@@ -113,7 +112,6 @@ gulp.task('index', function () {
                 addRootSlash: false
             }), {relative: true})
 
-
             .pipe(inject(gulp.src([basePath + '/*/*/*.js', '!' + basePath + '/lib/*/*.js', '!' + basePath + '/platform/*/*.js'], {read: false}), {
                 name: 'submodule',
                 addRootSlash: false
@@ -124,19 +122,19 @@ gulp.task('index', function () {
 });
 
 var allPaths = [
-    'ionic/build/js/lib.min.js',
-    'ionic/build/js/module.min.js',
-    'ionic/build/js/submodule.min.js'
+    rootPath + 'build/js/lib.min.js',
+    rootPath + 'build/js/module.min.js',
+    rootPath + 'build/js/submodule.min.js'
 ];
 
 gulp.task('all.min', function () {
-   return gulp.src(allPaths)
-       .pipe(ngMin({dynamic:true}))
-       .pipe(uglify())
-       .pipe(concat('all.min.js'))
-       .pipe(gulp.dest('ionic/build/js'));
+    return gulp.src(allPaths)
+        .pipe(ngMin({dynamic: true}))
+        .pipe(uglify())
+        .pipe(concat('all.min.js'))
+        .pipe(gulp.dest(rootPath + 'build/js'));
 });
 
 
-gulp.task('default', ['clean', 'minCss', 'libJs','moduleJs', 'submoduleJs']);
-gulp.task('all-min',['all.min']);
+gulp.task('default', ['clean', 'minCss', 'libJs', 'moduleJs', 'submoduleJs']);
+gulp.task('all-min', ['all.min']);
