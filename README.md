@@ -8,7 +8,7 @@ ionic project
  take case of the app.js
  gulp-inject is ready and minjs and mincss are ready too
  
- - include ng2 project
+
  - angular-watcher-count introduction
    coming soon, will has each module.
 
