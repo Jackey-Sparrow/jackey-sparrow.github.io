@@ -2,11 +2,14 @@
  * Created by lja on 2015/12/2.
  */
 (function (angular) {
-	'use strict'
+    'use strict'
 
-	angular.module('desktop').controller('desktopController',
-		['$scope',
-			function ($scope) {
-				$scope.name = 'desktop';
-			}]);
+    angular.module('desktop').controller('desktopController',
+        ['$scope', 'desktopDataService',
+            function ($scope, desktopDataService) {
+                $scope.name = 'desktop';
+
+                $scope.collection = desktopDataService.getCollection();
+                //console.table($scope.collection);
+            }]);
 })(angular);

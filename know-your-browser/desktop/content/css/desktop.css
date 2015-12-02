@@ -1,0 +1,21 @@
+.row {
+    width: 100%;
+    height: 30px;
+    overflow: hidden;
+}
+
+.row .eventName {
+    width: 400px;
+    height: 30px;
+    float: left;
+    text-align: center;
+    line-height: 30px;
+}
+
+.row .browserName {
+    width: 100px;
+    height: 30px;
+    float: left;
+    text-align: center;
+    line-height: 30px;
+}
