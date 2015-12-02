@@ -17,7 +17,7 @@
                     html += '<tr>';
                     html += '<td></td>';
                     browsers.forEach(function (browser) {
-                        html += '<td class="browser">' + browser + '</td>';
+                        html += '<td class="browserTitle">' + browser + '</td>';
                     });
                     html += '</tr>';
 

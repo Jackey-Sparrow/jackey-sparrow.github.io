@@ -15,3 +15,8 @@ td {
     color: red;
     text-align: center;
 }
+
+.browserTitle {
+    text-align: center;
+    font-weight: bold;
+}
