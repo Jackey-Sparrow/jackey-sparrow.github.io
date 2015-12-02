@@ -3,6 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
+    <link rel='stylesheet' href='app/content/css/main.css'/>
+    <link rel='stylesheet' href='app/content/css/header.css'/>
     <script src="lib/angular.js"></script>
     <script src="lib/angular-ui-router.js"></script>
     <script src="app.js"></script>
@@ -11,8 +13,12 @@
     <script src="desktop/controllers/desktop-controller.js"></script>
 </head>
 <body data-ng-app="myDom">
-<div>
-    <h1>header</h1>
+<div class='header-container'>
+    <ul>
+        <li><a class="logo"><img src={logo}/></a></li>
+        <li class="nav-tab"><a to='/' activeClassName="active">首页</a></li>
+        <li class="nav-tab"><a to='/about' activeClassName="active">关于</a></li>
+    </ul>
 </div>
 <div ui-view></div>
 </body>
