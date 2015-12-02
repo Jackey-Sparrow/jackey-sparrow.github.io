@@ -10,14 +10,16 @@
 			 $scope.name = 'desktop';
 
 			 $scope.collection = desktopDataService.getCollection();
+			 $scope.collectionCopy = angular.copy($scope.collection);
+
 
 			 $scope.keyWord = '';
 
 			 $scope.keyWordChange = function () {
 				 var result = {};
-				 for (var key in $scope.collection) {
+				 for (var key in $scope.collectionCopy) {
 					 if (key.indexOf($scope.keyWord) !== -1) {
-						 result[key] = $scope.collection[key];
+						 result[key] = $scope.collectionCopy[key];
 					 }
 				 }
 
