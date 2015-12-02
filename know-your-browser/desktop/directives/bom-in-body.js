@@ -17,17 +17,13 @@
                     html += '<tr>';
                     html += '<td></td>';
                     browsers.forEach(function (browser) {
-                        html += '<td>' + browser + '</td>';
+                        html += '<td class="browser">' + browser + '</td>';
                     });
                     html += '</tr>';
 
                     for (var item in scope.collection) {
                         html += '<tr>'
                         html += '<td>' + item + '</td>';
-                        //scope.collection[item].forEach(function (browser) {
-                        //    html += '<td class="browser">' + browser + '</td>'
-                        //});
-
                         browsers.forEach(function (browser) {
                             var index = scope.collection[item].indexOf(browser),
                                 markUp = '';
