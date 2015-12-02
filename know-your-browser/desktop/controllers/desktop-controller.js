@@ -10,6 +10,7 @@
                 $scope.name = 'desktop';
 
                 $scope.collection = desktopDataService.getCollection();
-                console.table($scope.collection);
+
+
             }]);
 })(angular);

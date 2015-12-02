@@ -12,20 +12,35 @@
                     collection: '='
                 },
                 link: function (scope, element, attr) {
-                    console.log(scope);
+                    var browsers = ['CHROME', 'SAFARI', 'FIREFOX', 'IE10', 'IE9', 'IE8', 'IE7', 'IE5'];
                     var html = '<table>';
+                    html += '<tr>';
+                    html += '<td></td>';
+                    browsers.forEach(function (browser) {
+                        html += '<td>' + browser + '</td>';
+                    });
+                    html += '</tr>';
+
                     for (var item in scope.collection) {
                         html += '<tr>'
-                        html += '<td>'+item+'</td>';
-                        scope.collection[item].forEach(function (browser) {
-                            html += '<td class="browser">' + browser + '</td>'
+                        html += '<td>' + item + '</td>';
+                        //scope.collection[item].forEach(function (browser) {
+                        //    html += '<td class="browser">' + browser + '</td>'
+                        //});
+
+                        browsers.forEach(function (browser) {
+                            var index = scope.collection[item].indexOf(browser),
+                                markUp = '';
+                            if (~index) {
+                                markUp = browser;
+                            }
+                            html += '<td class="browser">' + markUp + '</td>';
                         });
                         html += '</tr>';
                     }
-                    html+='</table>';
+                    html += '</table>';
 
                     element.append($compile(html)(scope));
-
                 }
             };
         }]);
