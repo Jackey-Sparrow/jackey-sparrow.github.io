@@ -1,21 +1,17 @@
-.row {
-    width: 100%;
-    height: 30px;
-    overflow: hidden;
+table {
+    border-collapse: collapse;
+    border: none;
+    margin-left: 20px;
+    margin-top: 20px;
+    font-size: 12px;
 }
 
-.row .eventName {
-    width: 400px;
-    height: 30px;
-    float: left;
-    text-align: center;
-    line-height: 30px;
+td {
+    border: solid #000 1px;
+    min-width: 80px;
 }
 
-.row .browserName {
-    width: 100px;
-    height: 30px;
-    float: left;
+.browser {
+    color: red;
     text-align: center;
-    line-height: 30px;
 }

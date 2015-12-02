@@ -13,18 +13,19 @@
                 },
                 link: function (scope, element, attr) {
                     console.log(scope);
-                    var html = '<div>';
+                    var html = '<table>';
                     for (var item in scope.collection) {
                         var list = scope.collection[item];
-                        html += '<div class="row">'
-                        html += '<div class="eventName">';
+                        html += '<tr>'
+                        html += '<td>';
                         html += item;
-                        html += '</div>';
+                        html += '</td>';
                         list.forEach(function (browser) {
-                            html += '<div class="browserName">' + browser + '</div>'
+                            html += '<td class="browser">' + browser + '</td>'
                         });
-                        html += '</div>';
+                        html += '</tr>';
                     }
+                    html+='</table>';
 
                     element.append($compile(html)(scope));
 
@@ -32,15 +33,4 @@
             };
         }]);
 
-    angular.module('desktop').directive('bomInBodyBrowser', [function () {
-        return {
-            restrict: 'A',
-            scope: {
-                list: '='
-            },
-            link: function (scope, element) {
-                console.log(scope);
-            }
-        };
-    }]);
 })(angular);
