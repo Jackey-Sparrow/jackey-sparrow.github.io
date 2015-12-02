@@ -15,12 +15,9 @@
                     console.log(scope);
                     var html = '<table>';
                     for (var item in scope.collection) {
-                        var list = scope.collection[item];
                         html += '<tr>'
-                        html += '<td>';
-                        html += item;
-                        html += '</td>';
-                        list.forEach(function (browser) {
+                        html += '<td>'+item+'</td>';
+                        scope.collection[item].forEach(function (browser) {
                             html += '<td class="browser">' + browser + '</td>'
                         });
                         html += '</tr>';
