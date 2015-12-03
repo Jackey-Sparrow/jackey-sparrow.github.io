@@ -9,21 +9,15 @@
 		 function ($scope, desktopDataService, $timeout) {
 			 $scope.name = 'desktop';
 
-			 $scope.collection = desktopDataService.getCollection();
-			 $scope.collectionCopy = angular.copy($scope.collection);
-
+			 desktopDataService.getBodyBom().then(function (data) {
+				 $scope.collection = data;
+				 $scope.collectionCopy = angular.copy($scope.collection);
+			 });
 
 			 $scope.keyWord = '';
 
 			 $scope.keyWordChange = function () {
-				 var result = {};
-				 for (var key in $scope.collectionCopy) {
-					 if (key.indexOf($scope.keyWord) !== -1) {
-						 result[key] = $scope.collectionCopy[key];
-					 }
-				 }
-
-				 $scope.collection = result;
+				 $scope.collection = desktopDataService.filterCollection($scope.keyWord, $scope.collectionCopy);
 				 $timeout(function () {
 					 $scope.$apply();
 				 });
