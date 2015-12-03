@@ -21,6 +21,7 @@
 			 };
 
 			 function collect(source) {
+
 				 if (!angular.isArray(source)) {
 					 return;
 				 }
