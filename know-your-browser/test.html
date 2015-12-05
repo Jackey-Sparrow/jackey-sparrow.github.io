@@ -7,4 +7,20 @@
 <body>
 
 </body>
+<script>
+    var windowResult = [];
+    for(var key in window){
+        windowResult.push(key);
+    }
+
+    var bodyResult = [];
+    for(var key in document.body){
+        bodyResult.push(key);
+    }
+
+    var documentResult = [];
+    for(var key in document){
+        documentResult.push(key);
+    }
+</script>
 </html>
