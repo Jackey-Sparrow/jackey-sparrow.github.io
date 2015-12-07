@@ -4,7 +4,7 @@
 (function (angular) {
 	'use strict';
 
-	angular.module('desktop').directive('bomInBody',
+	angular.module('desktop').directive('desktopRepeat',
 		['$compile', 'desktopDataService',
 		 function ($compile, desktopDataService) {
 			 return {

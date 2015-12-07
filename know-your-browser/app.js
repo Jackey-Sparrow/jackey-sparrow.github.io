@@ -8,7 +8,7 @@
 		'desktop'
 	];
 
-	var moduleName = 'myDom';
+	var moduleName = 'myBrowser';
 
 	angular.module(moduleName, requiredModules);
 

@@ -8,13 +8,13 @@
 
 	angular.module('desktop').config(function ($stateProvider, $urlRouterProvider) {
 		$stateProvider
-			.state('desktop', {
-				url: '/desktop',
-				templateUrl: 'desktop/templates/desktop.html',
+			.state('body', {
+				url: '/body',
+				templateUrl: 'desktop/templates/desktop-body.html',
 				controller: 'desktopController'
 			});
 
-		$urlRouterProvider.otherwise('/desktop');
+		$urlRouterProvider.otherwise('/body');
 	});
 
 })(angular);
