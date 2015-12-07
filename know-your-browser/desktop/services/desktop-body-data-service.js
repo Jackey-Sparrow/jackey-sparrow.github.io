@@ -8,10 +8,8 @@
 		['desktopBodyHttpService', '$q', 'platformDataServiceFactory',
 		 function (desktopHttpService, $q, platformDataServiceFactory) {
 
-
-
 			 return platformDataServiceFactory.Create(desktopHttpService);
-			
+
 		 }]);
 
 })(angular);

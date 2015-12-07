@@ -8,7 +8,7 @@
 		['$scope', 'desktopBodyDataService', '$timeout',
 		 function ($scope, desktopBodyDataService, $timeout) {
 
-			 $scope.name = 'desktop';
+			 $scope.name = 'body';
 
 			 $scope.keyWord = '';
 

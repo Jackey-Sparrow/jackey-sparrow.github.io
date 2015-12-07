@@ -8,7 +8,7 @@
 		['$scope', 'desktopWindowDataService', '$timeout',
 		 function ($scope, desktopWindowDataService, $timeout) {
 
-			 $scope.name = 'desktop';
+			 $scope.name = 'window';
 
 			 $scope.keyWord = '';
 
