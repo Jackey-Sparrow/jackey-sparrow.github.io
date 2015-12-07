@@ -23,6 +23,10 @@
     <script src="desktop/services/desktop-window-data-service.js"></script>
     <script src="desktop/controllers/desktop-window-controller.js"></script>
 
+    <script src="desktop/services/desktop-document-http-service.js"></script>
+    <script src="desktop/services/desktop-document-data-service.js"></script>
+    <script src="desktop/controllers/desktop-document-controller.js"></script>
+
     <script src="desktop/directives/desktop-repeat.js"></script>
 </head>
 <body data-ng-app="myBrowser">
@@ -31,6 +35,7 @@
         <li><a class="logo"><img src="app/content/images/logo.png"/></a></li>
         <li class="nav-tab"><a ui-sref=".body" ui-sref-active="active">body</a></li>
         <li class="nav-tab"><a ui-sref=".window" ui-sref-active="active">window</a></li>
+        <li class="nav-tab"><a ui-sref=".document" ui-sref-active="active">document</a></li>
     </ul>
 </div>
 <div ui-view></div>

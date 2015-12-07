@@ -6,9 +6,9 @@
 
 	angular.module('desktop').factory('desktopWindowDataService',
 		['desktopWindowHttpService', 'platformDataServiceFactory',
-		 function (desktopHttpService, platformDataServiceFactory) {
+		 function (httpService, platformDataServiceFactory) {
 
-			 return platformDataServiceFactory.Create(desktopHttpService);
+			 return platformDataServiceFactory.Create(httpService);
 
 		 }]);
 

@@ -21,6 +21,13 @@
 				controller: 'desktopWindowController'
 			});
 
+		$stateProvider
+			.state('document', {
+				url: '/document',
+				templateUrl: 'desktop/templates/desktop.html',
+				controller: 'desktopDocumentController'
+			});
+
 		$urlRouterProvider.otherwise('/body');
 	});
 
