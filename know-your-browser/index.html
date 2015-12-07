@@ -10,6 +10,9 @@
     <script src="lib/angular-ui-router.js"></script>
     <script src="app.js"></script>
 
+    <script src="app/platform.js"></script>
+    <script src="app/services/platform-data-service-factory.js"></script>
+
     <script src="desktop/desktop.js"></script>
     <script src="desktop/services/desktop-body-http-service.js"></script>
     <script src="desktop/services/desktop-body-data-service.js"></script>
@@ -25,8 +28,8 @@
 <div class='header-container'>
     <ul>
         <li><a class="logo"><img src="app/content/images/logo.png"/></a></li>
-        <li class="nav-tab"><a ui-sref=".body">body</a></li>
-        <li class="nav-tab"><a ui-sref=".window">window</a></li>
+        <li class="nav-tab"><a ui-sref=".body" ui-sref-active="active">body</a></li>
+        <li class="nav-tab"><a ui-sref=".window" ui-sref-active="active">window</a></li>
     </ul>
 </div>
 <div ui-view></div>
