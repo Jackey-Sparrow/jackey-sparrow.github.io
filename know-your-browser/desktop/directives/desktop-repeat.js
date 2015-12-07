@@ -11,7 +11,7 @@
 				scope: {
 					collection: '='
 				},
-				link: function (scope, element, attr) {
+				link: function (scope, element) {
 					var browsers = ['CHROME', 'SAFARI', 'FIREFOX', 'IE10', 'IE9', 'IE8', 'IE7', 'IE5'];
 
 					function build() {
@@ -24,8 +24,8 @@
 						});
 						html += '</tr>';
 
-						for (var item in scope.collection) {
-							html += '<tr>'
+						for (var item in scope.collection) {//jshint ignore:line
+							html += '<tr>';
 							html += '<td>' + item + '</td>';
 							browsers.forEach(function (browser) {
 								var index = scope.collection[item].indexOf(browser),
@@ -34,7 +34,7 @@
 									markUp = browser;
 								}
 								html += '<td class="browser">' + markUp + '</td>';
-							});
+							});//jshint ignore:line
 							html += '</tr>';
 						}
 						html += '</table>';

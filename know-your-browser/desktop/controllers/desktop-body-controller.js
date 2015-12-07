@@ -2,7 +2,7 @@
  * Created by lja on 2015/12/2.
  */
 (function (angular) {
-	'use strict'
+	'use strict';
 
 	angular.module('desktop').controller('desktopBodyController',
 		['$scope', 'desktopBodyDataService', 'platformControllerFactory',
