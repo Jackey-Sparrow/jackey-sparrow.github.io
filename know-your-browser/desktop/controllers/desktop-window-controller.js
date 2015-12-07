@@ -5,28 +5,12 @@
 	'use strict'
 
 	angular.module('desktop').controller('desktopWindowController',
-		['$scope', 'desktopWindowDataService', '$timeout',
-		 function ($scope, desktopWindowDataService, $timeout) {
+		['$scope', 'desktopWindowDataService', 'platformControllerFactory',
+		 function ($scope, dataService, platformControllerFactory) {
 
 			 $scope.name = 'window';
 
-			 $scope.keyWord = '';
-
-			 function init() {
-				 desktopWindowDataService.getData().then(function (data) {
-					 $scope.collection = data;
-					 $scope.collectionCopy = angular.copy($scope.collection);
-				 });
-			 }
-
-			 $scope.keyWordChange = function () {
-				 $scope.collection = desktopWindowDataService.filterCollection($scope.keyWord, $scope.collectionCopy);
-				 $timeout(function () {
-					 $scope.$apply();
-				 });
-			 };
-
-			 init();
+			 platformControllerFactory.initController($scope, dataService);
 
 		 }]);
 })(angular);
