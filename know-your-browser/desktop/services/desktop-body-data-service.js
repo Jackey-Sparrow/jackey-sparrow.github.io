@@ -5,54 +5,13 @@
 	'use strict';
 
 	angular.module('desktop').factory('desktopBodyDataService',
-		['desktopBodyHttpService', '$q',
-		 function (desktopHttpService, $q) {
+		['desktopBodyHttpService', '$q', 'platformDataServiceFactory',
+		 function (desktopHttpService, $q, platformDataServiceFactory) {
 
-			 var service = {};
 
-			 service.getData = function () {
-				 var defer = $q.defer();
-				 desktopHttpService.getData().then(function (response) {
-					 defer.resolve(collect(response.data));
-				 }, function () {
-					 defer.reject('error');
-				 });
-				 return defer.promise;
-			 };
 
-			 function collect(source) {
-
-				 if (!angular.isArray(source)) {
-					 return;
-				 }
-
-				 var target = {};
-				 source.forEach(function (item) {
-					 var browserName = item.browser,
-						 events = item.events.split(',');
-					 loop(browserName, events);
-				 });
-
-				 function loop(browserName, events) {
-					 events.forEach(function (event) {
-						 target[event] ? target[event].push(browserName) : target[event] = [browserName];
-					 });
-				 }
-
-				 return target;
-			 }
-
-			 service.filterCollection = function (search, source) {
-				 var result = {};
-				 for (var key in source) {
-					 if (~key.indexOf(search)) {
-						 result[key] = source[key];
-					 }
-				 }
-				 return result;
-			 };
-
-			 return service;
+			 return platformDataServiceFactory.Create(desktopHttpService);
+			
 		 }]);
 
 })(angular);
