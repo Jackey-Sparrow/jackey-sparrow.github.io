@@ -11,7 +11,14 @@
 			.state('body', {
 				url: '/body',
 				templateUrl: 'desktop/templates/desktop-body.html',
-				controller: 'desktopController'
+				controller: 'desktopBodyController'
+			});
+
+		$stateProvider
+			.state('window', {
+				url: '/window',
+				templateUrl: 'desktop/templates/desktop-body.html',
+				controller: 'desktopWindowController'
 			});
 
 		$urlRouterProvider.otherwise('/body');

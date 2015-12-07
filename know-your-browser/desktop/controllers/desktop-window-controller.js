@@ -4,23 +4,23 @@
 (function (angular) {
 	'use strict'
 
-	angular.module('desktop').controller('desktopBodyController',
-		['$scope', 'desktopBodyDataService', '$timeout',
-		 function ($scope, desktopBodyDataService, $timeout) {
+	angular.module('desktop').controller('desktopWindowController',
+		['$scope', 'desktopWindowDataService', '$timeout',
+		 function ($scope, desktopWindowDataService, $timeout) {
 
 			 $scope.name = 'desktop';
 
 			 $scope.keyWord = '';
 
 			 function init() {
-				 desktopBodyDataService.getData().then(function (data) {
+				 desktopWindowDataService.getData().then(function (data) {
 					 $scope.collection = data;
 					 $scope.collectionCopy = angular.copy($scope.collection);
 				 });
 			 }
 
 			 $scope.keyWordChange = function () {
-				 $scope.collection = desktopBodyDataService.filterCollection($scope.keyWord, $scope.collectionCopy);
+				 $scope.collection = desktopWindowDataService.filterCollection($scope.keyWord, $scope.collectionCopy);
 				 $timeout(function () {
 					 $scope.$apply();
 				 });

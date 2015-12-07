@@ -1,6 +1,7 @@
-<div data-ng-controller="desktopController">
+<div data-ng-controller="desktopBodyController">
     <h1 class="module-title">key in document.body</h1>
-    <div style="margin-left: 20px;margin-top: 20px;">
+
+    <div class="search">
         <input data-ng-model="keyWord" data-ng-change="keyWordChange()"/>
     </div>
     <div data-desktop-repeat data-collection="collection"></div>

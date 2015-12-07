@@ -4,8 +4,8 @@
 (function (angular) {
 	'use strict';
 
-	angular.module('desktop').factory('desktopBodyDataService',
-		['desktopBodyHttpService', '$q',
+	angular.module('desktop').factory('desktopWindowDataService',
+		['desktopWindowHttpService', '$q',
 		 function (desktopHttpService, $q) {
 
 			 var service = {};
