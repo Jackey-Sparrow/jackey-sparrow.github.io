@@ -28,7 +28,11 @@
     "events": "onbeforeunload,status,document,onafterprint,onblur,onunload,event,self,clientInformation,parent,name,screenTop,screen,offscreenBuffering,navigator,onhashchange,clipboardData,closed,onload,screenLeft,onscroll,onmessage,maxConnectionsPerServer,location,onresize,history,length,frameElement,onerror,top,window,onhelp,onbeforeprint,onfocus,frames,external,opener,localStorage,defaultStatus,sessionStorage,performance,console,__IE_DEVTOOLBAR_CONSOLE_COMMAND_LINE"
   },
   {
+    "browser":"IE6",
+    "events":"onbeforeunload,onafterprint,top,location,parent,offscreenBuffering,frameElement,onerror,screen,event,clipboardData,onresize,defaultStatus,onblur,window,onload,onscroll,screenTop,onfocus,Option,length,onbeforeprint,frames,self,clientInformation,external,screenLeft,opener,onunload,document,closed,history,Image,navigator,status,onhelp,name"
+  },
+  {
     "browser": "IE5",
-    "events": "onbeforeunload,status,document,onafterprint,onblur,onunload,event,self,clientInformation,parent,name,screenTop,screen,offscreenBuffering,navigator,onhashchange,clipboardData,closed,onload,screenLeft,onscroll,onmessage,maxConnectionsPerServer,location,onresize,history,length,frameElement,onerror,top,window,onhelp,onbeforeprint,onfocus,frames,external,opener,localStorage,defaultStatus,sessionStorage,performance,console,__IE_DEVTOOLBAR_CONSOLE_COMMAND_LINE"
+    "events": "onbeforeunload,onafterprint,top,location,parent,offscreenBuffering,frameElement,onerror,screen,event,clipboardData,onresize,defaultStatus,onblur,window,onload,onscroll,screenTop,onfocus,Option,length,onbeforeprint,frames,self,clientInformation,external,screenLeft,opener,onunload,document,closed,history,Image,navigator,status,onhelp,name"
   }
 ]

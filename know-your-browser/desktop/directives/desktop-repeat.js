@@ -12,7 +12,7 @@
 					collection: '='
 				},
 				link: function (scope, element) {
-					var browsers = ['CHROME', 'SAFARI', 'FIREFOX', 'IE10', 'IE9', 'IE8', 'IE7', 'IE5'];
+					var browsers = ['CHROME', 'SAFARI', 'FIREFOX', 'IE10', 'IE9', 'IE8', 'IE7', 'IE6', 'IE5'];
 
 					function build() {
 						element.empty();
