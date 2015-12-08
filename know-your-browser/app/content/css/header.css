@@ -17,6 +17,7 @@
     height: 60px;
     display: inline-block;
     overflow: hidden;
+    float: left;
 }
 
 .header-container ul .logo {

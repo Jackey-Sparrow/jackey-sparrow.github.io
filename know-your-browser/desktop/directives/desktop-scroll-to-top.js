@@ -15,7 +15,7 @@
                 link: function (scope, element) {
 
                     element.bind('click', function () {
-                        //chrome works fine
+                        //chrome safari work fine
                         document.body.scrollTop = 0;
                     });
 
