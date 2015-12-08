@@ -22,5 +22,14 @@
     for(var key in document){
         documentResult.push(key);
     }
+
+    var d = document.createElement('div'),
+            styleResult = [];
+
+    for(var key in d.style){
+        styleResult.push(key);
+    }
+
+    document.write(styleResult.toString());
 </script>
 </html>
