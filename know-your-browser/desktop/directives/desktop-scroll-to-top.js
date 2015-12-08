@@ -2,27 +2,38 @@
  * Created by Jackey Li on 15/12/8.
  */
 (function (angular) {
-    'use strict';
+	'use strict';
 
-    angular.module('desktop').directive('desktopScrollToTop',
-        [function () {
-            return {
-                restrict: 'EA',
-                scope: {
-                    content: '@'
-                },
-                template: '<div class="scrollToTop">{{::content}}</div>',
-                link: function (scope, element) {
+	angular.module('desktop').directive('desktopScrollToTop',
+		['platformBrowserTeller',
+		 function (platformBrowserTeller) {
+			 return {
+				 restrict: 'EA',
+				 scope: {
+					 content: '@'
+				 },
+				 template: '<div class="scrollToTop">{{::content}}</div>',
+				 link: function (scope, element) {
+					 console.log(platformBrowserTeller);
 
-                    element.bind('click', function () {
-                        //chrome safari work fine
-                        document.body.scrollTop = 0;
-                    });
+					 element.bind('click', function () {
 
-                    scope.$on('$destroy', function () {
-                        element.unbind('click');
-                    });
-                }
-            };
-        }]);
+						 if (platformBrowserTeller && (platformBrowserTeller.mozilla || platformBrowserTeller.msie)) {
+							 //firefox IE
+							 document.documentElement.scrollTop = 0;
+						 }
+						 else {
+							 //chrome safari
+							 document.body.scrollTop = 0;
+						 }
+
+
+					 });
+
+					 scope.$on('$destroy', function () {
+						 element.unbind('click');
+					 });
+				 }
+			 };
+		 }]);
 })(angular);
