@@ -8,7 +8,7 @@
 		['$scope', 'desktopBodyDataService', 'platformControllerFactory',
 		 function ($scope, dataService, platformControllerFactory) {
 
-			 $scope.name = 'body';
+			 $scope.name = 'document.body';
 
 			 platformControllerFactory.initController($scope, dataService);
 
