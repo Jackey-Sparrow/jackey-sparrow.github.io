@@ -32,6 +32,7 @@
     <script src="desktop/controllers/desktop-style-controller.js"></script>
 
     <script src="desktop/directives/desktop-repeat.js"></script>
+    <script src="desktop/directives/desktop-scroll-to-top.js"></script>
 </head>
 <body data-ng-app="myBrowser">
 <div class='header-container'>
@@ -44,5 +45,6 @@
     </ul>
 </div>
 <div ui-view></div>
+<div data-desktop-scroll-to-top data-content="TOP"></div>
 </body>
 </html>
