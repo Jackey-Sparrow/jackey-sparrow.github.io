@@ -28,6 +28,13 @@
 				controller: 'desktopDocumentController'
 			});
 
+		$stateProvider
+			.state('style', {
+				url: '/style',
+				templateUrl: 'desktop/templates/desktop.html',
+				controller: 'desktopStyleController'
+			});
+
 		$urlRouterProvider.otherwise('/body');
 	});
 
