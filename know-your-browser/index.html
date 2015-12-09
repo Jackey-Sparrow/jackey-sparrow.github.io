@@ -6,6 +6,7 @@
     <link rel='stylesheet' href='app/content/css/main.css'/>
     <link rel='stylesheet' href='app/content/css/header.css'/>
     <link rel='stylesheet' href='desktop/content/css/desktop.css'/>
+    <link rel='stylesheet' href='app/content/css/loading.css'/>
     <link rel='stylesheet' href='lib/05_angular-chart/angular-chart.css'/>
 
     <script src="lib/01_angular/angular.js"></script>
@@ -17,7 +18,10 @@
     <script src="app.js"></script>
 
     <script src="app/platform.js"></script>
+    <script src="app/directives/platform-scroll-to-top.js"></script>
+    <script src="app/directives/platform-loading.js"></script>
     <script src="app/services/platform-browser-detect-service.js"></script>
+
     <script src="app/services/platform-data-service-factory.js"></script>
     <script src="app/services/platform-controller-factory.js"></script>
 
@@ -41,7 +45,7 @@
     <script src="desktop/controllers/desktop-chart-controller.js"></script>
 
     <script src="desktop/directives/desktop-repeat.js"></script>
-    <script src="desktop/directives/desktop-scroll-to-top.js"></script>
+
 </head>
 <body data-ng-app="myBrowser">
 <div class='header-container'>
@@ -55,6 +59,6 @@
     </ul>
 </div>
 <div ui-view></div>
-<div data-desktop-scroll-to-top data-content="TOP"></div>
+<div data-platform-scroll-to-top data-content="TOP"></div>
 </body>
 </html>

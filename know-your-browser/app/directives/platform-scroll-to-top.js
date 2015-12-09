@@ -4,7 +4,7 @@
 (function (angular) {
 	'use strict';
 
-	angular.module('desktop').directive('desktopScrollToTop',
+	angular.module('platform').directive('platformScrollToTop',
 		['platformBrowserTeller',
 		 function (platformBrowserTeller) {
 			 return {

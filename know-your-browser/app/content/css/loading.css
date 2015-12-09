@@ -1,0 +1,27 @@
+.loading-container {
+    display: none;
+}
+
+.loading-show {
+    display: block;
+}
+
+.loading-container .loading-overlay {
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+}
+
+.loading-container .loading-body {
+    width: 50px;
+    height: 50px;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    background: white;
+    z-index: 15;
+    color: black;
+}
