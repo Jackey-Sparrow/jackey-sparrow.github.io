@@ -9,7 +9,9 @@
 		 function ($timeout) {
 			 return {
 				 restrict: 'EA',
-				 scope: {},
+				 scope: {
+					 loading: '='
+				 },
 				 replace: true,
 				 template: '<div class="loading-container loading-show">' +
 				 '<div class="loading-overlay"></div>' +
@@ -35,6 +37,8 @@
 					 var scope = $rootScope.$new(true);
 					 var element = scope.element = $compile('<platform-loading></platform-loading>')(scope);
 					 $document[0].body.appendChild(element[0]);
+
+
 				 }
 			 };
 		 }]);
