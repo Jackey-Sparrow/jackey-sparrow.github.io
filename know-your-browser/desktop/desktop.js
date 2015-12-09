@@ -35,6 +35,13 @@
 				controller: 'desktopStyleController'
 			});
 
+		$stateProvider
+			.state('chart', {
+				url: '/chart',
+				templateUrl: 'desktop/templates/chart.html',
+				controller: 'desktopChartController'
+			});
+
 		$urlRouterProvider.otherwise('/body');
 	});
 
