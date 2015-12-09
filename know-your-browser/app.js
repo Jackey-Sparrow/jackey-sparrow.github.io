@@ -5,6 +5,7 @@
 	'use strict';
 
 	var requiredModules = [
+		'chart.js',
 		'platform',
 		'desktop'
 	];
