@@ -30,17 +30,15 @@
 			 return {
 				 show: function () {
 
-					 var scope = $rootScope.$new(true),
-						 element;
+					 var scope = $rootScope.$new(true);
 
 					 scope.showLoading = function () {
-						 element = scope.element = $compile('<platform-loading></platform-loading>')(scope);
-						 $document[0].body.appendChild(element[0]);
+						 scope.element = $compile('<platform-loading></platform-loading>')(scope);
+						 $document[0].body.appendChild(scope.element[0]);
 					 };
 
 					 scope.cancel = function () {
-						 $document[0].body.removeChild(element[0]);
-						 element = null;
+						 $document[0].body.removeChild(scope.element[0]);
 						 scope.$destroy();
 					 };
 
