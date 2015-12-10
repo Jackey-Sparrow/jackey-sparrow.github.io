@@ -55,10 +55,10 @@
 					 };
 
 					 scope.cancel = function () {
-						 setTimeout(function () {
-							 $document[0].body.removeChild(scope.element[0]);
-							 scope.$destroy();
-						 }, 500);
+						 //setTimeout(function () {
+						 $document[0].body.removeChild(scope.element[0]);
+						 scope.$destroy();
+						 // }, 500);
 					 };
 
 					 scope.showLoading();
