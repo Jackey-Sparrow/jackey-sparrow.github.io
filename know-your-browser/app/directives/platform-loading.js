@@ -11,7 +11,7 @@
 				replace: true,
 				template: '<div class="loading-container">' +
 				'<div class="loading-overlay"></div>' +
-				'<div class="loading-body"></div>' +
+				'<div class="loading-body"><div data-platform-spinner></div></div>' +
 				'<div class="loading-close">' +
 				'<div class="loading-close-text" data-ng-click="close()">x</div>' +
 				'</div>' +
@@ -23,6 +23,20 @@
 				}
 			};
 		}]);
+
+	angular.module('platform').directive('platformSpinner', [function () {
+		return {
+			restrict: 'AE',
+			replace: true,
+			template: '<div class="loading-spinner">' +
+			'<div class="rect1"></div>' +
+			'<div class="rect2"></div>' +
+			'<div class="rect3"></div>' +
+			'<div class="rect4"></div>' +
+			'<div class="rect5"></div>' +
+			'</div>'
+		};
+	}]);
 
 	angular.module('platform').factory('$platformLoading',
 		['$rootScope', '$compile', '$document',
