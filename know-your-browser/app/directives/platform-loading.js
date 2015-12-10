@@ -13,7 +13,7 @@
 					 loading: '='
 				 },
 				 replace: true,
-				 template: '<div class="loading-container loading-show">' +
+				 template: '<div class="loading-container">' +
 				 '<div class="loading-overlay"></div>' +
 				 '<div class="loading-body"></div>' +
 				 '</div>',
@@ -38,7 +38,12 @@
 					 var element = scope.element = $compile('<platform-loading></platform-loading>')(scope);
 					 $document[0].body.appendChild(element[0]);
 
+					 scope.cancel = function () {
+						 //angular.element(element[0]).removeClass('loading-show');
+						 $document[0].body.removeChild(element[0]);
+					 };
 
+					 return scope.cancel;
 				 }
 			 };
 		 }]);

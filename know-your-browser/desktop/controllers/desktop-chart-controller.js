@@ -10,7 +10,11 @@
 			 $scope.labels = ['Download Sales', 'In-Store Sales', 'Mail-Order Sales'];
 			 $scope.data = [300, 500, 100];
 			 $scope.openLoading = function () {
-				 $platformLoading.show();
+				 var loading = $platformLoading.show();
+
+				 setTimeout(function () {
+					 loading();
+				 },6000);
 			 };
 		 }]);
 })(angular);

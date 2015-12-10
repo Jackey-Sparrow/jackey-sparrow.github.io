@@ -2,10 +2,6 @@
     display: none;
 }
 
-.loading-show {
-    display: block;
-}
-
 .loading-container .loading-overlay {
     position: absolute;
     top: 0px;
