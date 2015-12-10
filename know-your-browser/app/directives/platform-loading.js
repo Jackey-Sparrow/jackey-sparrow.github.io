@@ -11,7 +11,9 @@
 				replace: true,
 				template: '<div class="loading-container">' +
 				'<div class="loading-overlay"></div>' +
-				'<div class="loading-body"><div data-platform-spinner></div></div>' +
+				'<div class="loading-body">' +
+				'<div data-platform-spinner></div>' +
+				'</div>' +
 				'<div class="loading-close">' +
 				'<div class="loading-close-text" data-ng-click="close()">x</div>' +
 				'</div>' +
