@@ -12,9 +12,9 @@
 			 $scope.openLoading = function () {
 				 var loading = $platformLoading.show();
 
-				 setTimeout(function () {
-					 loading();
-				 },6000);
+//				 setTimeout(function () {
+//					 loading();
+//				 },6000);
 			 };
 		 }]);
 })(angular);

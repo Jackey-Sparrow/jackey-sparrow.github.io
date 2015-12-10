@@ -1,5 +1,23 @@
-.loading-container {
-    display: none;
+.loading-container .loading-close {
+    width: 70px;
+    height: 70px;
+    position: fixed;
+    right: -35px;
+    top: -35px;
+    background-color: white;
+    border-radius: 100%;
+}
+
+.loading-container .loading-close .loading-close-text {
+    width: 25px;
+    height: 25px;
+    margin-top: 35px;
+    color: black;
+    font-size: 25px;
+    line-height: 25px;
+    text-align: center;
+    margin-left: 10px;
+    cursor: pointer;
 }
 
 .loading-container .loading-overlay {

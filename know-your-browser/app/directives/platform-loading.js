@@ -5,8 +5,8 @@
 	'use strict';
 
 	angular.module('platform').directive('platformLoading',
-		['$timeout',
-		 function ($timeout) {
+		[
+		 function () {
 			 return {
 				 restrict: 'EA',
 				 scope: {
@@ -16,6 +16,9 @@
 				 template: '<div class="loading-container">' +
 				 '<div class="loading-overlay"></div>' +
 				 '<div class="loading-body"></div>' +
+				 '<div class="loading-close">' +
+				 '<div class="loading-close-text">x</div>' +
+				 '</div>' +
 				 '</div>',
 				 link: function (scope, element) {
 
