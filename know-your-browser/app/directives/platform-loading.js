@@ -4,6 +4,7 @@
 (function (angular) {
 	'use strict';
 
+	//todo: height is not right when body's height is too long
 	angular.module('platform').directive('platformLoading',
 		[function () {
 			return {
