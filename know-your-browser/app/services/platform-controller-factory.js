@@ -5,8 +5,8 @@
 	'use strict';
 
 	angular.module('platform').factory('platformControllerFactory',
-		['$timeout',
-		 function ($timeout) {
+		['$timeout', '$platformLoading',
+		 function ($timeout, $platformLoading) {
 
 			 var service = {};
 
@@ -16,9 +16,13 @@
 				 $scope.keyWord = '';
 
 				 function init() {
+					 var unLoading = $platformLoading.show();
 					 dataService.getData().then(function (data) {
 						 $scope.collection = data;
 						 $scope.collectionCopy = angular.copy($scope.collection);
+						 unLoading();
+					 }, function () {
+						 unLoading();
 					 });
 				 }
 
