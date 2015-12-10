@@ -58,7 +58,7 @@
 						 setTimeout(function () {
 							 $document[0].body.removeChild(scope.element[0]);
 							 scope.$destroy();
-						 }, 1000);
+						 }, 500);
 					 };
 
 					 scope.showLoading();
