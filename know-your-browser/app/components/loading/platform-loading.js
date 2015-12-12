@@ -20,7 +20,7 @@
 				'</div>' +
 				'</div>',
 				link: function (scope) {
-					scope.close = scope.cancel();
+					scope.close = scope.cancel;
 				}
 			};
 		}]);
