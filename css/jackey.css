@@ -9,6 +9,13 @@ body {
     height: 100%;
 }
 
+.jackey-row{
+    width: 100%;
+    height: auto;
+    margin-bottom: 20px;
+    overflow: hidden;
+}
+
 .jackey .container {
     margin: 20px auto;
     overflow: hidden;
