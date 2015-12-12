@@ -63,16 +63,61 @@ body {
     .container {
         width: 970px;
     }
+
+    .jackey .container .project {
+        width: 310px;
+        margin-right: 10px;
+    }
+
+    .jackey .container .project .project-img {
+        height: 156px;
+    }
+
+    .jackey .container .project .project-img a img {
+        width: 308px;
+        height: 154px;
+        border: 1px solid #dddddd;
+    }
+
 }
 
 @media screen and (min-width: 768px) and (max-width: 991px) {
     .container {
         width: 750px;
     }
+
+    .jackey .container .project {
+        width: 230px;
+        margin-right: 10px;
+    }
+
+    .jackey .container .project .project-img {
+        height: 126px;
+    }
+
+    .jackey .container .project .project-img a img {
+        width: 228px;
+        height: 124px;
+        border: 1px solid #dddddd;
+    }
 }
 
 @media screen and (max-width: 768px) {
     .container {
-        width: 750px;
+        width: 100%;
+    }
+
+    .jackey .container .project {
+        width: 100%;
+    }
+
+    .jackey .container .project .project-img {
+        height: 146px;
+    }
+
+    .jackey .container .project .project-img a img {
+        width: 100%;
+        height: 144px;
+        border: 1px solid #dddddd;
     }
 }
