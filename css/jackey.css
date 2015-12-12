@@ -1,0 +1,78 @@
+body {
+    font-family: open-sans, Helvetica Neue, Helvetica, Arial, sans-serif;
+}
+
+.jackey {
+    width: 100%;
+    height: 100%;
+}
+
+.jackey .container {
+    margin: 20px auto;
+    overflow: hidden;
+}
+
+.jackey .container .project {
+    float: left;
+}
+
+.jackey .container .project .project-img {
+    margin-bottom: 20px;
+}
+
+.jackey .container .project .project-img a img:hover {
+   border-color: #006600;
+}
+
+.jackey .container .project .project-img a {
+    cursor: pointer;
+}
+
+.jackey .container .project .project-title {
+    font-size: 16px;
+    margin-bottom: 10px;
+}
+
+.jackey .container .project .project-description {
+    font-size: 12px;
+    margin-bottom: 10px;
+}
+
+@media screen and (min-width: 1200px) {
+    .container {
+        width: 1050px;
+    }
+
+    .jackey .container .project {
+        width: 340px;
+        margin-right: 10px;
+    }
+
+    .jackey .container .project .project-img {
+        height: 196px;
+    }
+
+    .jackey .container .project .project-img a img {
+        width: 338px;
+        height: 194px;
+        border: 1px solid #dddddd;
+    }
+}
+
+@media screen and (min-width: 992px) and (max-width: 1199px) {
+    .container {
+        width: 970px;
+    }
+}
+
+@media screen and (min-width: 768px) and (max-width: 991px) {
+    .container {
+        width: 750px;
+    }
+}
+
+@media screen and (max-width: 768px) {
+    .container {
+        width: 750px;
+    }
+}
