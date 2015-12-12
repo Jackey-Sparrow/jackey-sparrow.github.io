@@ -1,5 +1,7 @@
 body {
     font-family: open-sans, Helvetica Neue, Helvetica, Arial, sans-serif;
+    margin: 0px;
+    padding: 0px;
 }
 
 .jackey {
@@ -21,7 +23,7 @@ body {
 }
 
 .jackey .container .project .project-img a img:hover {
-   border-color: #006600;
+    border-color: #006600;
 }
 
 .jackey .container .project .project-img a {
@@ -103,12 +105,21 @@ body {
 }
 
 @media screen and (max-width: 768px) {
+    .jackey {
+        width: auto;
+        height: 100%;
+        padding: 10px;
+    }
+
     .container {
         width: 100%;
+        margin: 0px 10px;
     }
 
     .jackey .container .project {
         width: 100%;
+        border-bottom: 1px solid #dddddd;
+        margin-bottom: 20px;
     }
 
     .jackey .container .project .project-img {
@@ -118,6 +129,6 @@ body {
     .jackey .container .project .project-img a img {
         width: 100%;
         height: 144px;
-        border: 1px solid #dddddd;
     }
+
 }
