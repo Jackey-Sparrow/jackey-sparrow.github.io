@@ -4,6 +4,7 @@
     display: block;
     line-height: 60px;
     background-color: #1e89e0;
+    overflow: hidden;
 }
 
 .header-container ul {

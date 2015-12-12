@@ -32,9 +32,15 @@
 .loading-container .loading-body {
     position: fixed;
     top: 50%;
-    left: 50%;
     z-index: 15;
     color: black;
+    width: 100%;
+}
+
+.loading-container .loading-body .loading-content{
+    width: 50px;
+    height: 60px;
+    margin: 0 auto;
 }
 
 /*spinner*/
