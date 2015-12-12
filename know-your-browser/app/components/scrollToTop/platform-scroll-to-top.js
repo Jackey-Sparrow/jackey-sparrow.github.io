@@ -14,7 +14,6 @@
 				 },
 				 template: '<div class="scrollToTop">{{::content}}</div>',
 				 link: function (scope, element) {
-					 console.log(platformBrowserTeller);
 
 					 element.bind('click', function () {
 
@@ -26,7 +25,6 @@
 							 //chrome safari
 							 document.body.scrollTop = 0;
 						 }
-
 
 					 });
 
