@@ -6,33 +6,49 @@
 
 	//todo:refactory
 	angular.module('desktop').controller('desktopChartController',
-		['$scope', '$platformLoading', 'desktopBodyDataService','desktopWindowDataService',
-		 function ($scope, $platformLoading, desktopBodyDataService,desktopWindowDataService) {
+		['$scope', '$platformLoading', 'desktopBodyDataService','desktopWindowDataService','desktopDocumentDataService',
+		 function ($scope, $platformLoading, desktopBodyDataService,desktopWindowDataService,desktopDocumentDataService) {
 			 $scope.bodyLabels = [];
-			 $scope.windowLabels = [];
 			 $scope.bodyData = [];
+
+			 $scope.windowLabels = [];
 			 $scope.windowData = [];
 
-			 var body = desktopBodyDataService.getStatistics();
+			 $scope.documentLabels = [];
+			 $scope.documentData = [];
 
-			 if (!body.CHROME) {
+			 var bodyY = desktopBodyDataService.getStatistics();
+
+			 if (!bodyY.CHROME) {
 				 desktopBodyDataService.getData().then(function () {
-					 body = desktopBodyDataService.getStatistics();
-					 for (var key in body) {
+					 bodyY = desktopBodyDataService.getStatistics();
+					 for (var key in bodyY) {
 						 $scope.bodyLabels.push(key);
-						 $scope.bodyData.push(body[key]);
+						 $scope.bodyData.push(bodyY[key]);
 					 }
 				 });
 			 }
 
-			 var window = desktopWindowDataService.getStatistics();
+			 var windowW = desktopWindowDataService.getStatistics();
 
-			 if (!window.CHROME) {
+			 if (!windowW.CHROME) {
 				 desktopWindowDataService.getData().then(function () {
-					 window = desktopBodyDataService.getStatistics();
-					 for (var key in body) {
+					 windowW = desktopWindowDataService.getStatistics();
+					 for (var key in windowW) {
 						 $scope.windowLabels.push(key);
-						 $scope.windowData.push(window[key]);
+						 $scope.windowData.push(windowW[key]);
+					 }
+				 });
+			 }
+
+			 var documentT = desktopDocumentDataService.getStatistics();
+
+			 if (!documentT.CHROME) {
+				 desktopDocumentDataService.getData().then(function () {
+					 documentT = desktopDocumentDataService.getStatistics();
+					 for (var key in documentT) {
+						 $scope.documentLabels.push(key);
+						 $scope.documentData.push(documentT[key]);
 					 }
 				 });
 			 }
