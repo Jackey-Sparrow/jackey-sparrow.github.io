@@ -4,20 +4,35 @@
 (function (angular) {
 	'use strict';
 
+	//todo:refactory
 	angular.module('desktop').controller('desktopChartController',
-		['$scope', '$platformLoading', 'desktopBodyDataService',
-		 function ($scope, $platformLoading, desktopBodyDataService) {
-			 $scope.labels = [];
-			 $scope.data = [];
+		['$scope', '$platformLoading', 'desktopBodyDataService','desktopWindowDataService',
+		 function ($scope, $platformLoading, desktopBodyDataService,desktopWindowDataService) {
+			 $scope.bodyLabels = [];
+			 $scope.windowLabels = [];
+			 $scope.bodyData = [];
+			 $scope.windowData = [];
 
-			 var result = desktopBodyDataService.getStatistics();
+			 var body = desktopBodyDataService.getStatistics();
 
-			 if (!result.CHROME) {
+			 if (!body.CHROME) {
 				 desktopBodyDataService.getData().then(function () {
-					 result = desktopBodyDataService.getStatistics();
-					 for (var key in result) {
-						 $scope.labels.push(key);
-						 $scope.data.push(result[key]);
+					 body = desktopBodyDataService.getStatistics();
+					 for (var key in body) {
+						 $scope.bodyLabels.push(key);
+						 $scope.bodyData.push(body[key]);
+					 }
+				 });
+			 }
+
+			 var window = desktopWindowDataService.getStatistics();
+
+			 if (!window.CHROME) {
+				 desktopWindowDataService.getData().then(function () {
+					 window = desktopBodyDataService.getStatistics();
+					 for (var key in body) {
+						 $scope.windowLabels.push(key);
+						 $scope.windowData.push(window[key]);
 					 }
 				 });
 			 }
