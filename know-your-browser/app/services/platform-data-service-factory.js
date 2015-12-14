@@ -7,7 +7,7 @@
 	angular.module('platform').factory('platformDataServiceFactory',
 		['$q', function ($q) {
 
-			var service = {};
+			var service = {}, statistics = {};
 
 			service.Create = function (httpService) {
 
@@ -31,6 +31,7 @@
 					source.forEach(function (item) {
 						var browserName = item.browser,
 							events = item.events.split(',');
+						statistics[browserName] = events.length;
 						loop(browserName, events);
 					});
 
@@ -53,10 +54,15 @@
 					return result;
 				}
 
+				function getStatistics() {
+					return statistics;
+				}
+
 				return {
 					getData: getData,
-					filterCollection: filterCollection
-				}
+					filterCollection: filterCollection,
+					getStatistics:getStatistics
+				};
 
 			};
 

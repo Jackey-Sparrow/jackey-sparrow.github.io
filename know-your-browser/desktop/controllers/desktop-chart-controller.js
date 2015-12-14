@@ -5,16 +5,26 @@
 	'use strict';
 
 	angular.module('desktop').controller('desktopChartController',
-		['$scope', '$platformLoading',
-		 function ($scope, $platformLoading) {
-			 $scope.labels = ['Download Sales', 'In-Store Sales', 'Mail-Order Sales'];
-			 $scope.data = [300, 500, 100];
+		['$scope', '$platformLoading', 'desktopBodyDataService',
+		 function ($scope, $platformLoading, desktopBodyDataService) {
+			 $scope.labels = [];
+			 $scope.data = [];
+
+			 var result = desktopBodyDataService.getStatistics();
+
+			 if (!result.CHROME) {
+				 desktopBodyDataService.getData().then(function () {
+					 result = desktopBodyDataService.getStatistics();
+					 for (var key in result) {
+						 $scope.labels.push(key);
+						 $scope.data.push(result[key]);
+					 }
+				 });
+			 }
+
+
 			 $scope.openLoading = function () {
 				 var closeLoading = $platformLoading.show();
-
-//				 setTimeout(function () {
-//					 closeLoading();
-//				 },6000);
 			 };
 		 }]);
 })(angular);
