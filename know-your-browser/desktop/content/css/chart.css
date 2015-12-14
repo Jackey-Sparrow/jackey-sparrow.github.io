@@ -3,7 +3,7 @@
 }
 .chart-panel {
     width: 555px;
-    height: 380px;
+    min-height: 380px;
     margin-bottom: 20px;
     background-color: #fff;
     border: 1px solid #ddd;
@@ -22,5 +22,6 @@
 }
 
 .chart-panel .container {
-
+    min-height: 330px;
+    overflow: hidden;
 }
