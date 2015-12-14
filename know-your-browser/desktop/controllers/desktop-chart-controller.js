@@ -6,8 +6,10 @@
 
 	//todo:refactory
 	angular.module('desktop').controller('desktopChartController',
-		['$scope', '$platformLoading', 'desktopBodyDataService', 'desktopWindowDataService', 'desktopDocumentDataService',
-		 function ($scope, $platformLoading, desktopBodyDataService, desktopWindowDataService, desktopDocumentDataService) {
+		['$scope', '$platformLoading', 'desktopBodyDataService',
+		 'desktopWindowDataService', 'desktopDocumentDataService', 'desktopStyleDataService',
+		 function ($scope, $platformLoading, desktopBodyDataService,
+		           desktopWindowDataService, desktopDocumentDataService, desktopStyleDataService) {
 			 $scope.bodyLabels = [];
 			 $scope.bodyData = [];
 
@@ -16,6 +18,9 @@
 
 			 $scope.documentLabels = [];
 			 $scope.documentData = [];
+
+			 $scope.styleLabels = [];
+			 $scope.styleData = [];
 
 			 var bodyY = desktopBodyDataService.getStatistics();
 
@@ -49,6 +54,18 @@
 					 for (var key in documentT) {
 						 $scope.documentLabels.push(key);
 						 $scope.documentData.push(documentT[key]);
+					 }
+				 });
+			 }
+
+			 var styleE = desktopStyleDataService.getStatistics();
+
+			 if (!styleE.CHROME) {
+				 desktopStyleDataService.getData().then(function () {
+					 styleE = desktopStyleDataService.getStatistics();
+					 for (var key in styleE) {
+						 $scope.styleLabels.push(key);
+						 $scope.styleData.push(styleE[key]);
 					 }
 				 });
 			 }
