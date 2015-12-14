@@ -6,8 +6,8 @@
 
 	//todo:refactory
 	angular.module('desktop').controller('desktopChartController',
-		['$scope', '$platformLoading', 'desktopBodyDataService','desktopWindowDataService','desktopDocumentDataService',
-		 function ($scope, $platformLoading, desktopBodyDataService,desktopWindowDataService,desktopDocumentDataService) {
+		['$scope', '$platformLoading', 'desktopBodyDataService', 'desktopWindowDataService', 'desktopDocumentDataService',
+		 function ($scope, $platformLoading, desktopBodyDataService, desktopWindowDataService, desktopDocumentDataService) {
 			 $scope.bodyLabels = [];
 			 $scope.bodyData = [];
 
