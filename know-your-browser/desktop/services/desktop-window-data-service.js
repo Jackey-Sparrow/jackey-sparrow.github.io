@@ -8,7 +8,9 @@
 		['desktopWindowHttpService', 'platformDataServiceFactory',
 		 function (httpService, platformDataServiceFactory) {
 
-			 return platformDataServiceFactory.Create(httpService);
+			 var service = platformDataServiceFactory.Create(httpService);
+			 service.getName = 'window';
+			 return service;
 
 		 }]);
 

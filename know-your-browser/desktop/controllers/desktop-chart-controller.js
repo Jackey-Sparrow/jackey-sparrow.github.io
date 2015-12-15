@@ -23,6 +23,10 @@
 			 $scope.styleLabels = [];
 			 $scope.styleData = [];
 
+			 $scope.bodyLoading = true;
+			 $scope.documentLoading = true;
+			 $scope.windowLoading = true;
+			 $scope.styleLoading = true;
 			 getChartData(desktopStyleDataService, $scope.styleLabels, $scope.styleData);
 			 getChartData(desktopDocumentDataService, $scope.documentLabels, $scope.documentData);
 			 getChartData(desktopWindowDataService, $scope.windowLabels, $scope.windowData);
@@ -34,11 +38,20 @@
 				 if (!statistics.CHROME) {
 					 dataService.getData().then(function () {
 						 statistics = dataService.getStatistics();
+						 console.log(dataService.getName);
 						 for (var key in statistics) {//jshint ignore:line
 							 labels.push(key);
 							 data.push(statistics[key]);
 						 }
+						 $scope[dataService.getName + 'Loading'] = false;
+
 					 });
+				 }
+				 else {
+					 for (var key in statistics) {//jshint ignore:line
+						 labels.push(key);
+						 data.push(statistics[key]);
+					 }
 				 }
 			 }
 

@@ -61,7 +61,7 @@
 				return {
 					getData: getData,
 					filterCollection: filterCollection,
-					getStatistics:getStatistics
+					getStatistics: getStatistics
 				};
 
 			};

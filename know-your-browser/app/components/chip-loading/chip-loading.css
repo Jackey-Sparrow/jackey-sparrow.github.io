@@ -5,6 +5,10 @@
     left: 0px;
 }
 
+.chip-loading-container-hide {
+    display: none;
+}
+
 .chip-loading-container .chip-loading-overlay {
     position: absolute;
     top: 0px;

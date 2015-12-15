@@ -8,17 +8,12 @@
 		[function () {
 			return {
 				restrict: 'EA',
-				replace: true,
 				scope: {
 					dialogLoading: '='
 				},
 				templateUrl: 'app/components/chip-loading/templates/chip-loading.html',
 				link: function (scope, element) {
 					element.parent().css('position', ' relative');
-					function show(){
-
-					}
-
 				}
 			};
 		}]);

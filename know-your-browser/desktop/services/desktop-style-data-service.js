@@ -8,7 +8,9 @@
 		['desktopStyleHttpService', '$q', 'platformDataServiceFactory',
 		 function (httpService, $q, platformDataServiceFactory) {
 
-			 return platformDataServiceFactory.Create(httpService);
+			 var service = platformDataServiceFactory.Create(httpService);
+			 service.getName = 'style';
+			 return service;
 
 		 }]);
 
