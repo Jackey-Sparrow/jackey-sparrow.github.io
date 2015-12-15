@@ -35,24 +35,23 @@
 
 			 function getChartData(dataService) {
 				 var statistics = desktopStyleDataService.getStatistics();
-
+				 var name = dataService.getName;
 				 if (!statistics.CHROME) {
 					 dataService.getData().then(function () {
 						 statistics = dataService.getStatistics();
-						 console.log(dataService.getName);
 						 for (var key in statistics) {//jshint ignore:line
-							 $scope[dataService.getName + 'Labels'].push(key);
-							 $scope[dataService.getName + 'Data'].push(statistics[key]);
+							 $scope[name + 'Labels'].push(key);
+							 $scope[name + 'Data'].push(statistics[key]);
 						 }
-						 $scope[dataService.getName + 'Loading'] = false;
-
+						 $scope[name + 'Loading'] = false;
 					 });
 				 }
 				 else {
 					 for (var key in statistics) {//jshint ignore:line
-						 labels.push(key);
-						 data.push(statistics[key]);
+						 $scope[name + 'Labels'].push(key);
+						 $scope[name + 'Data'].push(statistics[key]);
 					 }
+					 $scope[name + 'Loading'] = false;
 				 }
 			 }
 
