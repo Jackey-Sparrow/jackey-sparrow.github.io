@@ -27,12 +27,13 @@
 			 $scope.documentLoading = true;
 			 $scope.windowLoading = true;
 			 $scope.styleLoading = true;
-			 getChartData(desktopStyleDataService, $scope.styleLabels, $scope.styleData);
-			 getChartData(desktopDocumentDataService, $scope.documentLabels, $scope.documentData);
-			 getChartData(desktopWindowDataService, $scope.windowLabels, $scope.windowData);
-			 getChartData(desktopBodyDataService, $scope.bodyLabels, $scope.bodyData);
 
-			 function getChartData(dataService, labels, data) {
+			 getChartData(desktopStyleDataService);
+			 getChartData(desktopDocumentDataService);
+			 getChartData(desktopWindowDataService);
+			 getChartData(desktopBodyDataService);
+
+			 function getChartData(dataService) {
 				 var statistics = desktopStyleDataService.getStatistics();
 
 				 if (!statistics.CHROME) {
@@ -40,8 +41,8 @@
 						 statistics = dataService.getStatistics();
 						 console.log(dataService.getName);
 						 for (var key in statistics) {//jshint ignore:line
-							 labels.push(key);
-							 data.push(statistics[key]);
+							 $scope[dataService.getName + 'Labels'].push(key);
+							 $scope[dataService.getName + 'Data'].push(statistics[key]);
 						 }
 						 $scope[dataService.getName + 'Loading'] = false;
 
