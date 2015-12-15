@@ -10,15 +10,6 @@
 			return {
 				restrict: 'EA',
 				replace: true,
-//				template: '<div class="loading-container">' +
-//				'<div class="loading-overlay"></div>' +
-//				'<div class="loading-body">' +
-//				'<div data-platform-spinner></div>' +
-//				'</div>' +
-//				'<div class="loading-close">' +
-//				'<div class="loading-close-text" data-ng-click="close()">x</div>' +
-//				'</div>' +
-//				'</div>',
 				templateUrl: 'app/components/loading/templates/loading.html',
 				link: function (scope) {
 					scope.close = scope.cancel;
@@ -30,13 +21,6 @@
 		return {
 			restrict: 'AE',
 			replace: true,
-//			template: '<div class="loading-spinner">' +
-//			'<div class="rect1"></div>' +
-//			'<div class="rect2"></div>' +
-//			'<div class="rect3"></div>' +
-//			'<div class="rect4"></div>' +
-//			'<div class="rect5"></div>' +
-//			'</div>'
 			templateUrl: 'app/components/loading/templates/spinner.html'
 		};
 	}]);

@@ -10,6 +10,7 @@
 		 'desktopWindowDataService', 'desktopDocumentDataService', 'desktopStyleDataService',
 		 function ($scope, $platformLoading, desktopBodyDataService,
 		           desktopWindowDataService, desktopDocumentDataService, desktopStyleDataService) {
+
 			 $scope.bodyLabels = [];
 			 $scope.bodyData = [];
 
@@ -22,52 +23,23 @@
 			 $scope.styleLabels = [];
 			 $scope.styleData = [];
 
-			 var bodyY = desktopBodyDataService.getStatistics();
+			 getChartData(desktopStyleDataService, $scope.styleLabels, $scope.styleData);
+			 getChartData(desktopDocumentDataService, $scope.documentLabels, $scope.documentData);
+			 getChartData(desktopWindowDataService, $scope.windowLabels, $scope.windowData);
+			 getChartData(desktopBodyDataService, $scope.bodyLabels, $scope.bodyData);
 
-			 if (!bodyY.CHROME) {
-				 desktopBodyDataService.getData().then(function () {
-					 bodyY = desktopBodyDataService.getStatistics();
-					 for (var key in bodyY) {
-						 $scope.bodyLabels.push(key);
-						 $scope.bodyData.push(bodyY[key]);
-					 }
-				 });
-			 }
+			 function getChartData(dataService, labels, data) {
+				 var statistics = desktopStyleDataService.getStatistics();
 
-			 var windowW = desktopWindowDataService.getStatistics();
-
-			 if (!windowW.CHROME) {
-				 desktopWindowDataService.getData().then(function () {
-					 windowW = desktopWindowDataService.getStatistics();
-					 for (var key in windowW) {
-						 $scope.windowLabels.push(key);
-						 $scope.windowData.push(windowW[key]);
-					 }
-				 });
-			 }
-
-			 var documentT = desktopDocumentDataService.getStatistics();
-
-			 if (!documentT.CHROME) {
-				 desktopDocumentDataService.getData().then(function () {
-					 documentT = desktopDocumentDataService.getStatistics();
-					 for (var key in documentT) {
-						 $scope.documentLabels.push(key);
-						 $scope.documentData.push(documentT[key]);
-					 }
-				 });
-			 }
-
-			 var styleE = desktopStyleDataService.getStatistics();
-
-			 if (!styleE.CHROME) {
-				 desktopStyleDataService.getData().then(function () {
-					 styleE = desktopStyleDataService.getStatistics();
-					 for (var key in styleE) {
-						 $scope.styleLabels.push(key);
-						 $scope.styleData.push(styleE[key]);
-					 }
-				 });
+				 if (!statistics.CHROME) {
+					 dataService.getData().then(function () {
+						 statistics = dataService.getStatistics();
+						 for (var key in statistics) {//jshint ignore:line
+							 labels.push(key);
+							 data.push(statistics[key]);
+						 }
+					 });
+				 }
 			 }
 
 
