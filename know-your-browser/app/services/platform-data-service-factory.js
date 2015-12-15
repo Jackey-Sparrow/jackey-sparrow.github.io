@@ -7,10 +7,10 @@
 	angular.module('platform').factory('platformDataServiceFactory',
 		['$q', function ($q) {
 
-			var service = {}, statistics = {};
+			var service = {};
 
 			service.Create = function (httpService) {
-
+				var statistics = {};
 				function getData() {
 					var defer = $q.defer();
 					httpService.getData().then(function (response) {
