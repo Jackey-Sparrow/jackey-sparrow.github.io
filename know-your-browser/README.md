@@ -4,6 +4,7 @@
 此项目兼容浏览器：
 IE9 IE10 CHROME FIREFOX SAFARI
 
-TODO:LOADING
+TODO:cache gulp
+
 
 
