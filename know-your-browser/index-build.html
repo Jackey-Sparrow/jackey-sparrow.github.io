@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link rel="shortcut icon" href="favicon.ico"/>
+    <!--<meta name="viewport" content="width=device-width, initial-scale=1.0">-->
+    <title>Know Your Browsers</title>
+    <link rel='stylesheet' href='build/css/main.min.css'/>
+    <!--<script src="build/js/lib.min.js"></script>-->
+    <!--<script src="build/js/module.min.js"></script>-->
+    <script src="build/js/all.min.js"></script>
+</head>
+<body data-ng-app="myBrowser">
+<div class='header-container'>
+    <ul>
+        <li><a class="logo"><img src="app/content/images/logo.png"/></a></li>
+        <li class="nav-tab"><a ui-sref=".body" ui-sref-active="active">body</a></li>
+        <li class="nav-tab"><a ui-sref=".window" ui-sref-active="active">window</a></li>
+        <li class="nav-tab"><a ui-sref=".document" ui-sref-active="active">document</a></li>
+        <li class="nav-tab"><a ui-sref=".style" ui-sref-active="active">style</a></li>
+        <li class="nav-tab"><a ui-sref=".chart" ui-sref-active="active">chart</a></li>
+    </ul>
+</div>
+<div ui-view></div>
+<div data-platform-scroll-to-top data-content="TOP"></div>
+</body>
+</html>
