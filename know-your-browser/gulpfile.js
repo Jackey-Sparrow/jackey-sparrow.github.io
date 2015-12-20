@@ -32,7 +32,6 @@ var libPath = [
 
 gulp.task('libJs', function () {
 	return gulp.src(libPath)
-		//.pipe(ngMin({dynamic: true}))
 		.pipe(uglify())
 		.pipe(concat('lib.min.js'))
 		.pipe(gulp.dest(rootPath + 'build/js'));
