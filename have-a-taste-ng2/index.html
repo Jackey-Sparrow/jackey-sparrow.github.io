@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Have a taste ng2</title>
+
+    <!-- 1. Load libraries -->
+    <script src="lib/angular2-polyfills.js"></script>
+    <script src="lib/system.js"></script>
+    <script src="lib/typescript.js"></script>
+    <script src="lib/Rx.js"></script>
+    <script src="lib/angular2.dev.js"></script>
+
+    <!-- 2. Configure SystemJS -->
+    <script>
+        System.config({
+            transpiler: 'typescript',
+            typescriptOptions: {emitDecoratorMetadata: true},
+            packages: {'app': {defaultExtension: 'ts'}}
+        });
+        System.import('app/boot')
+                .then(null, console.error.bind(console));
+    </script>
+
+</head>
+
+<!-- 3. Display the application -->
+<body>
+<my-app>Loading...</my-app>
+</body>
+
+</html>
