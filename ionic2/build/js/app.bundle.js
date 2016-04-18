@@ -116,7 +116,20 @@ var Login = exports.Login = (_dec = (0, _ionicAngular.Page)({
     _createClass(Login, [{
         key: 'onLogin',
         value: function onLogin() {
-            this.nav.push(_tabs.TabsPage);
+            var _this = this;
+
+            var loading = _ionicAngular.Loading.create({
+                content: 'Login',
+                duration: 3000,
+                dismissOnPageChange: true
+            });
+
+            this.nav.present(loading);
+
+            setTimeout(function () {
+                loading.dismiss();
+                _this.nav.push(_tabs.TabsPage);
+            }, 1000);
         }
     }]);
 
@@ -204,8 +217,6 @@ var Tweet = exports.Tweet = (_dec = (0, _ionicAngular.Page)({
     }]);
 
     function Tweet(http, nav) {
-        var _this = this;
-
         _classCallCheck(this, Tweet);
 
         this.http = http;
@@ -213,26 +224,52 @@ var Tweet = exports.Tweet = (_dec = (0, _ionicAngular.Page)({
         this.loading;
         this.tweets = [];
 
+        this.curPage = 0;
+        this.pageSize = 5;
+
         //todo: not well, may use onPageLoaded
-        setTimeout(function () {
-            _this.loadTweet();
-        }, 500);
+        //setTimeout(()=> {
+        //    this.loadTweet();
+        //}, 500);
     }
 
     _createClass(Tweet, [{
         key: 'loadTweet',
         value: function loadTweet() {
-            var _this2 = this;
+            var _this = this;
 
             this.presentLoading();
             this.http.get('data/comments.json').subscribe(function (res) {
-                console.log(res.json());
                 setTimeout(function () {
-                    _this2.closeLoading();
-                    _this2.tweets = res.json();
+                    _this.closeLoading();
+                    _this.tweets = res.json();
                 }, 2000);
             });
         }
+    }, {
+        key: 'refresh',
+        value: function refresh() {
+            this.tweets = [];
+            this.loadTweet();
+        }
+    }, {
+        key: 'loadMore',
+        value: function loadMore(infiniteScroll) {
+            console.log('load more');
+
+            setTimeout(function () {
+                console.log('load more2');
+                infiniteScroll.complete();
+            }, 2000);
+        }
+
+        //getTweets(curPage,pageSize){
+        //    this.http.get('data/comments.json').subscribe(res => {
+        //        let result = res.json();
+        //        result.
+        //    });
+        //}
+
     }, {
         key: 'presentLoading',
         value: function presentLoading() {
@@ -247,13 +284,17 @@ var Tweet = exports.Tweet = (_dec = (0, _ionicAngular.Page)({
     }, {
         key: 'closeLoading',
         value: function closeLoading() {
-            this.loading.dismiss();
+            this.loading.destroy();
         }
+    }, {
+        key: 'onPageLoaded',
+        value: function onPageLoaded() {
+            var _this2 = this;
 
-        //onPageLoaded(){
-        //    this.loadTweet();
-        //}
-
+            setTimeout(function () {
+                _this2.loadTweet();
+            }, 500);
+        }
     }]);
 
     return Tweet;
