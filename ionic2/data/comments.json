@@ -1,0 +1,83 @@
+[
+  {
+    "id": 1,
+    "tweetId": 1,
+    "userId": 1,
+    "userName": "Jackey",
+    "postTime": "2016-04-28",
+    "avatar": "avatar06.jpg",
+    "comment": "wow that's some serious chat action"
+  },
+  {
+    "id": 2,
+    "tweetId": 1,
+    "userId": 1,
+    "postTime": "2016-04-28",
+    "userName": "Cassi",
+    "avatar": "avatar07.jpg",
+    "comment": "Ok, It's fine"
+  },
+  {
+    "id": 3,
+    "tweetId": 1,
+    "userId": 1,
+    "userName": "Jackey",
+    "postTime": "2016-04-28",
+    "avatar": "avatar08.jpg",
+    "comment": "We should go out!"
+  },
+  {
+    "id": 4,
+    "tweetId": 1,
+    "userId": 1,
+    "userName": "Jackey",
+    "postTime": "2016-04-28",
+    "avatar": "avatar09.jpg",
+    "comment": "Hi, It's me."
+  },
+  {
+    "id": 5,
+    "tweetId": 3,
+    "userId": 1,
+    "userName": "Jackey",
+    "postTime": "2016-04-28",
+    "avatar": "avatar01.jpg",
+    "comment": "Wow, beautiful"
+  },
+  {
+    "id": 6,
+    "tweetId": 2,
+    "userId": 1,
+    "userName": "Jackey",
+    "postTime": "2016-04-28",
+    "avatar": "avatar02.jpg",
+    "comment": "So?"
+  },
+  {
+    "id": 7,
+    "tweetId": 2,
+    "userId": 1,
+    "userName": "Jackey",
+    "postTime": "2016-04-28",
+    "avatar": "avatar03.jpg",
+    "comment": "Be strong!"
+  },
+  {
+    "id": 8,
+    "tweetId": 2,
+    "userId": 1,
+    "userName": "Jackey",
+    "postTime": "2016-04-28",
+    "avatar": "avatar04.jpg",
+    "comment": "It's cool."
+  },
+  {
+    "id": 9,
+    "tweetId": 3,
+    "userId": 1,
+    "userName": "Jackey",
+    "postTime": "2016-04-28",
+    "avatar": "avatar05.jpg",
+    "comment": "En, see you"
+  }
+]
