@@ -2,7 +2,7 @@
 'use strict';
 
 Object.defineProperty(exports, "__esModule", {
-    value: true
+	value: true
 });
 exports.MyApp = undefined;
 
@@ -22,37 +22,51 @@ var _login = require('./pages/login/login');
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
-// http://ionicframework.com/docs/v2/api/config/Config/
-
-
 //template: '<ion-nav [root]="rootPage"></ion-nav>',
 var MyApp = exports.MyApp = (_dec = (0, _ionicAngular.App)({
-    template: '<ion-nav [root]="login"></ion-nav>',
-    config: {} }), _dec(_class = function () {
-    _createClass(MyApp, null, [{
-        key: 'parameters',
-        get: function get() {
-            return [[_ionicAngular.Platform]];
-        }
-    }]);
+	template: '<ion-nav [root]="login"></ion-nav>',
+	config: {}, // http://ionicframework.com/docs/v2/api/config/Config/
+	pipes: [_ionicAngular.TranslatePipe]
+}), _dec(_class = function () {
+	_createClass(MyApp, null, [{
+		key: 'parameters',
+		get: function get() {
+			return [[_ionicAngular.Platform], [_ionicAngular.Translate]];
+		}
+	}]);
 
-    function MyApp(platform) {
-        _classCallCheck(this, MyApp);
+	function MyApp(platform, Translate) {
+		_classCallCheck(this, MyApp);
 
-        this.rootPage = _tabs.TabsPage;
+		this.rootPage = _tabs.TabsPage;
 
-        this.login = _login.Login;
+		this.login = _login.Login;
 
-        //this.nav = nav;
+		this.translate = Translate;
+		this.translate.translations('cn', {
+			'userName': '用户名',
+			'password': '密码',
+			'language': '语言',
+			'login': '登陆'
+		});
 
-        platform.ready().then(function () {
-            // Okay, so the platform is ready and our plugins are available.
-            // Here you can do any higher level native things you might need.
-            _ionicNative.StatusBar.styleDefault();
-        });
-    }
+		this.translate.translations('en', {
+			'userName': 'UserName',
+			'password': 'Password',
+			'language': 'Language',
+			'login': 'Login'
+		});
 
-    return MyApp;
+		this.translate.setLanguage('en');
+
+		platform.ready().then(function () {
+			// Okay, so the platform is ready and our plugins are available.
+			// Here you can do any higher level native things you might need.
+			_ionicNative.StatusBar.styleDefault();
+		});
+	}
+
+	return MyApp;
 }()) || _class);
 
 },{"./pages/login/login":3,"./pages/tabs/tabs":6,"es6-shim":262,"ionic-angular":343,"ionic-native":365}],2:[function(require,module,exports){
@@ -99,16 +113,17 @@ var _userLocalStorage = require('./userLocalStorage');
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
 var Login = exports.Login = (_dec = (0, _ionicAngular.Page)({
-	templateUrl: 'build/pages/login/login.html'
+	templateUrl: 'build/pages/login/login.html',
+	pipes: [_ionicAngular.TranslatePipe]
 }), _dec(_class = function () {
 	_createClass(Login, null, [{
 		key: 'parameters',
 		get: function get() {
-			return [[_ionicAngular.NavController]];
+			return [[_ionicAngular.NavController], [_ionicAngular.Translate]];
 		}
 	}]);
 
-	function Login(nav) {
+	function Login(nav, translate) {
 		_classCallCheck(this, Login);
 
 		this.name = 'Login';
@@ -120,15 +135,41 @@ var Login = exports.Login = (_dec = (0, _ionicAngular.Page)({
 			password: null
 		};
 
-		this.restoreUserLocalStorage();
+		this.translate = translate;
+
+		this.languages = [{
+			id: 'en',
+			name: 'English'
+		}, {
+			id: 'cn',
+			name: '中文'
+		}];
+
+		this.restoreUserLocalStorage(function (lang) {
+			this.loadTranslation(lang);
+		});
 	}
 
 	_createClass(Login, [{
+		key: 'changeLanguage',
+		value: function changeLanguage(languageKey) {
+			console.log(languageKey);
+			this.loadTranslation(languageKey);
+		}
+	}, {
+		key: 'loadTranslation',
+		value: function loadTranslation(lang) {
+			this.login = {
+				userName: this.translate.translate('userName', lang),
+				password: this.translate.translate('password', lang),
+				language: this.translate.translate('language', lang),
+				loginBtn: this.translate.translate('login', lang)
+			};
+		}
+	}, {
 		key: 'onLogin',
 		value: function onLogin() {
-
 			this.storeUserLocalStorage();
-
 			this.showLoading();
 		}
 	}, {
@@ -156,13 +197,19 @@ var Login = exports.Login = (_dec = (0, _ionicAngular.Page)({
 		}
 	}, {
 		key: 'restoreUserLocalStorage',
-		value: function restoreUserLocalStorage() {
+		value: function restoreUserLocalStorage(callback) {
 			var that = this;
 			this.localStorage.getUser().then(function (user) {
 				if (user) {
 					user = JSON.parse(user);
 					that.user.userName = user.userName;
 					that.user.password = user.password;
+					that.user.languageKey = user.languageKey;
+					that.translate.setLanguage(that.user.languageKey);
+					callback && callback.apply(that, [that.user.languageKey]);
+				} else {
+					that.user.languageKey = 'en';
+					callback && callback.apply(that, [that.user.languageKey]);
 				}
 			});
 		}
@@ -282,15 +329,11 @@ var _http = require('angular2/http');
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
 var TweetService = exports.TweetService = function () {
-	_createClass(TweetService, null, [{
-		key: 'parameters',
 
-
-		//todo: not working
-		get: function get() {
-			return [[_http.Http]];
-		}
-	}]);
+	//todo: not working
+	//static get parameters() {
+	//	return [[Http]];
+	//}
 
 	function TweetService(http) {
 		_classCallCheck(this, TweetService);
@@ -301,8 +344,9 @@ var TweetService = exports.TweetService = function () {
 	_createClass(TweetService, [{
 		key: 'loadData',
 		value: function loadData(curPage, pageSize, http) {
+			var that = this;
 			var promise = new Promise(function (resolve, reject) {
-				http.get('data/comments.json').subscribe(function (res) {
+				that.http.get('data/comments.json').subscribe(function (res) {
 					var result = res.json();
 					result = result.slice(pageSize * (curPage - 1), pageSize * curPage);
 					resolve(result);
@@ -353,9 +397,10 @@ var Tweet = exports.Tweet = (_dec = (0, _ionicAngular.Page)({
 		this.nav = nav;
 		this.loading;
 		this.tweets = [];
-		this.dataService = new _tweetService.TweetService();
+		this.dataService = new _tweetService.TweetService(this.http);
 		this.curPage = 1;
 		this.pageSize = 2;
+		this.moreTweet = true;
 	}
 
 	_createClass(Tweet, [{
@@ -375,9 +420,10 @@ var Tweet = exports.Tweet = (_dec = (0, _ionicAngular.Page)({
 		key: 'refresh',
 		value: function refresh() {
 			this.curPage = 1;
-			this.pageSize = 5;
+			this.pageSize = 2;
 			this.tweets = [];
 			this.loadTweet();
+			this.moreTweet = true;
 		}
 	}, {
 		key: 'loadMore',
@@ -386,8 +432,11 @@ var Tweet = exports.Tweet = (_dec = (0, _ionicAngular.Page)({
 			this.curPage++;
 			var that = this;
 			this.dataService.loadData(this.curPage, this.pageSize, this.http).then(function (tweets) {
-				if (tweets) {
+
+				if (tweets.length) {
 					that.tweets = that.tweets.concat(tweets);
+				} else {
+					that.moreTweet = false;
 				}
 				infiniteScroll.complete();
 			});
