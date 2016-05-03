@@ -8991,6 +8991,9 @@ body {
   margin-bottom: 0px;
   padding-bottom: 0px; }
 
+.contact-detail ion-icon {
+  color: #ff9500; }
+
 .setting .feedback {
   color: #38b57f; }
 
