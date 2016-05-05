@@ -8994,6 +8994,9 @@ body {
 .contact-detail ion-icon {
   color: #ff9500; }
 
+.contact-detail .contact-detail-face .item-inner {
+  border: none; }
+
 .setting .feedback {
   color: #38b57f; }
 
